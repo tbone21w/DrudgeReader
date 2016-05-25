@@ -44,10 +44,10 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCk-2p-VJZ" userLabel="NewUpdatesIndicator" customClass="UpdateIndicator" customModule="Drudge" customModuleProvider="target">
-                                <rect key="frame" x="255" y="69" width="91" height="27"/>
+                                <rect key="frame" x="254" y="69" width="93" height="27"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="91" id="DQK-4Q-red"/>
+                                    <constraint firstAttribute="width" constant="93" id="DQK-4Q-red"/>
                                     <constraint firstAttribute="height" constant="27" id="nD8-8z-hJS"/>
                                 </constraints>
                             </view>

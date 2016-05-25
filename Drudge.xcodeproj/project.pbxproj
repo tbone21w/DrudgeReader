@@ -110,18 +110,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		32C6DC841CE9345E00ADF8C9 = {
+		3262A36F1CF5CE0200CC9AFA /* model */ = {
 			isa = PBXGroup;
 			children = (
-				322E1E341CF4F49D004D071F /* logoLaunchIcon.png */,
-				322E1E301CF488A2004D071F /* assets */,
-				322E1E2B1CF4034E004D071F /* DrudgeStyleKit.swift */,
 				32E69C141CEC893E00067B5E /* Image+CoreDataProperties.swift */,
 				32E69C151CEC893E00067B5E /* Image.swift */,
 				32E69C161CEC893E00067B5E /* Location+CoreDataProperties.swift */,
 				32E69C171CEC893E00067B5E /* Location.swift */,
 				32F97BE21CEB47E00023551D /* Article+CoreDataProperties.swift */,
 				32F97BE31CEB47E00023551D /* Article.swift */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		32C6DC841CE9345E00ADF8C9 = {
+			isa = PBXGroup;
+			children = (
+				322E1E341CF4F49D004D071F /* logoLaunchIcon.png */,
+				322E1E301CF488A2004D071F /* assets */,
+				322E1E2B1CF4034E004D071F /* DrudgeStyleKit.swift */,
+				3262A36F1CF5CE0200CC9AFA /* model */,
 				32C6DC8F1CE9345E00ADF8C9 /* Drudge */,
 				32C6DCA41CE9345E00ADF8C9 /* DrudgeTests */,
 				32C6DCAF1CE9345E00ADF8C9 /* DrudgeUITests */,

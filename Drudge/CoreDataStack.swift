@@ -11,10 +11,10 @@ import CoreData
 
 class CoreDataStack {
   
-  static let SAVE_DATA_NOTIFICATION = "com.nerdwaller.drudge.save_data_notification"
   
   let modelName = "Drudge"
-    
+  
+  
   lazy var context: NSManagedObjectContext = {
     var managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
     managedObjectContext.persistentStoreCoordinator = self.psc
@@ -32,7 +32,6 @@ class CoreDataStack {
     
     return managedObjectContext
   }()
-  
   
   
   private lazy var psc: NSPersistentStoreCoordinator = {
@@ -56,7 +55,6 @@ class CoreDataStack {
   }()
   
   
-  
   private lazy var managedObjectModel: NSManagedObjectModel = {
     
     let modelURL = NSBundle.mainBundle().URLForResource(self.modelName, withExtension: "momd")!
@@ -74,6 +72,7 @@ class CoreDataStack {
   }()
   
   
+  // MARK: CoreData Operations
   func saveContext () throws {
     
     var error: ErrorType?
@@ -122,7 +121,7 @@ class CoreDataStack {
     var count = 0
     
     do {
-      let results = try context.executeFetchRequest(fetchRequest) as! [NSNumber]
+      let results = try privateContext.executeFetchRequest(fetchRequest) as! [NSNumber]
       
       count = results.first!.integerValue
     } catch let error as NSError {
@@ -143,7 +142,7 @@ class CoreDataStack {
     var count = 0
     
     do {
-      let results = try context.executeFetchRequest(fetchRequest) as! [NSNumber]
+      let results = try privateContext.executeFetchRequest(fetchRequest) as! [NSNumber]
       
       count = results.first!.integerValue
     } catch let error as NSError {
@@ -170,7 +169,7 @@ class CoreDataStack {
     var maxDate:NSDate?
     
     do {
-      let results = try context.executeFetchRequest(fetchRequest)
+      let results = try privateContext.executeFetchRequest(fetchRequest)
       
       if let result = results.first {
         maxDate = result["MaxDate"] as? NSDate
@@ -195,7 +194,8 @@ class CoreDataStack {
     request.resultType = .UpdatedObjectsCountResultType
     
     do {
-      try context.executeRequest(request)
+      try privateContext.executeRequest(request)
+      try context.save()
     } catch {
       print (error)
     }
@@ -210,7 +210,7 @@ class CoreDataStack {
     let today = NSDate()
     let cutOffDate = NSCalendar.currentCalendar().dateByAddingUnit(
       .Day,
-      value: -1,
+      value: -30,
       toDate: today,
       options: NSCalendarOptions(rawValue: 0))
     
@@ -219,12 +219,11 @@ class CoreDataStack {
     let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
 
     do {
-      try context.executeRequest(deleteRequest)
+      try privateContext.executeRequest(deleteRequest)
       try context.save()
     } catch {
       print (error)
     }
-    
   }
   
 }

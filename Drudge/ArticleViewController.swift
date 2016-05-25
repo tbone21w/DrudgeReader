@@ -101,7 +101,6 @@ class ArticleViewController: UIViewController, UITableViewDataSource, UITableVie
   
   func handleGetUpdate(sender:UIGestureRecognizer) {
     
-    //TODO check if this on sepreate thread
     coreDataStack.resetNewArticles()
     
     hideUpdateIndicator()

@@ -50,8 +50,6 @@ class DrudgeAPI {
 
   
   
-  
-  
   private class func drudgeURL(path path:PathComponent, parameters: [String: String]?) -> NSURL {
     let components = NSURLComponents(string: baseURL)!
     
@@ -68,6 +66,8 @@ class DrudgeAPI {
 
     return components.URL!.URLByAppendingPathComponent(path.rawValue)
   }
+  
+  
   
   func articlesFromJSONData( inContext context: NSManagedObjectContext, data:NSData?) -> DrudgeAPIResult {
     
@@ -105,22 +105,8 @@ class DrudgeAPI {
             return .Failure(e)
           }
         }
-//        if let article = articleFromJSONData(inContext: context, json: articleJSON) {
-//          print("Article:   \(article.title!)  \(article.updatedAt!)")
-//          
-//          articles.append(article)
-//        } else {
-//          return .Failure(DrudgeAPIError.InvalidJSONData)
-//        }
       }
       
-      //TODO MOVE to ArticleManager
-      //save to DB
-//      do {
-//        try coreDataStack.saveContext()
-//      } catch let error as NSError {
-//        print("Error cleaning up core data \(error)")
-//      }
       
       print("Number of Articles: \(articles.count)")
       
