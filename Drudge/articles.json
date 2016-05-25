@@ -1,0 +1,132 @@
+{
+  "count": 41,
+  "next": "http://127.0.0.1:8000/api/articles?page=2&snapshot_id=43",
+  "previous": null,
+  "results": [
+    {
+      "id": 45,
+      "text": "FEC VICE-CHAIR CLAIMS 'THREATS' AFTER SHE TRIED TO REGULATE DRUDGE... 'HOMELAND SECURITY' ALERTED... OBAMA INVITES RAVEL TO WHITE HOUSE...",
+      "href": "http://www.thedailybeast.com/articles/2016/05/17/first-came-the-drudge-link-then-the-death-threats.html",
+      "images": [
+        {
+          "id": 6,
+          "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRexpGHocKpAs_r29cC_90aU0Qs5yK1mrz1f9N71Ya_UHmclRgHnw"
+        }
+      ],
+      "locations": [
+        "TOP_STORY",
+        "COLUMN"
+      ],
+      "current_location": "COLUMN"
+    },
+    {
+      "id": 10,
+      "text": "SHE KEEPS LOSING!HOW COME SHE IS WINNING?",
+      "href": "http://www.latimes.com/politics/la-na-clinton-sanders-democrats-20160516-snap-story.html",
+      "images": [
+        {
+          "id": 1,
+          "src": "https://s.yimg.com/bt/api/res/1.2/NcH5iwzMu7BAAd4jXEy.bQ--/YXBwaWQ9eW5ld3M7cT04NTt3PTgwMA--/http://globalfinance.zenfs.com/en_us/Finance/US_AFTP_SILICONALLEY_H_LIVE/Hillary_Clinton_I_Never_Smoked-90dec7ce80b1c43cabfc8e9adb4dd25d"
+        },
+        {
+          "id": 9,
+          "src": "https://pbs.twimg.com/media/CiqT9_QU4AADqmy.jpg:large"
+        }
+      ],
+      "locations": [
+        "MAIN_HEADLINE",
+        "COLUMN"
+      ],
+      "current_location": "COLUMN"
+    },
+    {
+      "id": 52,
+      "text": "SUPERDELS REBEL",
+      "href": "http://www.bloomberg.com/politics/articles/2016-05-17/a-small-group-of-superdelegates-could-close-the-deal-for-hillary-but-won-t",
+      "images": [
+        {
+          "id": 1,
+          "src": "https://s.yimg.com/bt/api/res/1.2/NcH5iwzMu7BAAd4jXEy.bQ--/YXBwaWQ9eW5ld3M7cT04NTt3PTgwMA--/http://globalfinance.zenfs.com/en_us/Finance/US_AFTP_SILICONALLEY_H_LIVE/Hillary_Clinton_I_Never_Smoked-90dec7ce80b1c43cabfc8e9adb4dd25d"
+        },
+        {
+          "id": 9,
+          "src": "https://pbs.twimg.com/media/CiqT9_QU4AADqmy.jpg:large"
+        }
+      ],
+      "locations": [
+        "MAIN_HEADLINE"
+      ],
+      "current_location": "MAIN_HEADLINE"
+    },
+    {
+      "id": 42,
+      "text": "Olympic athletes to get 'anti-Zika' condoms...",
+      "href": "http://www.independent.co.uk/life-style/health-and-families/health-news/rio-2016-olympics-zika-virus-condoms-australian-athletes-world-health-organisation-epidemic-a7031511.html",
+      "images": [],
+      "locations": [
+        "COLUMN"
+      ],
+      "current_location": "COLUMN"
+    },
+    {
+      "id": 51,
+      "text": "Fireball Streaks Through New England...",
+      "href": "http://www.necn.com/news/new-england/Fireball-Streaks-Through-The-New-England-Night-Sky-379761321.html",
+      "images": [],
+      "locations": [
+        "COLUMN"
+      ],
+      "current_location": "COLUMN"
+    },
+    {
+      "id": 62,
+      "text": "Justices reject challenge to protest ban on Supreme Court plaza...",
+      "href": "https://ca.news.yahoo.com/u-justices-reject-challenge-protest-ban-supreme-court-044838504.html",
+      "images": [],
+      "locations": [
+        "COLUMN"
+      ],
+      "current_location": "COLUMN"
+    },
+    {
+      "id": 63,
+      "text": "TSA HELL:  Chicago Airports Recommend 3-Hour Early...",
+      "href": "http://chicago.cbslocal.com/2016/05/17/chicago-airports-recommend-3-hour-cushion-for-security-lines-tuesday/",
+      "images": [],
+      "locations": [
+        "COLUMN"
+      ],
+      "current_location": "COLUMN"
+    },
+    {
+      "id": 59,
+      "text": "Man Dies After Assault at Hip-Hop Festival... Waiting in Line for Food...",
+      "href": "http://www.billboard.com/articles/columns/hip-hop/7370637/man-dies-sacramento-hip-hop-festival",
+      "images": [],
+      "locations": [
+        "COLUMN"
+      ],
+      "current_location": "COLUMN"
+    },
+    {
+      "id": 50,
+      "text": "Cannibals at Cannes... Flesh-eating flicks all the rage...",
+      "href": "http://www.hollywoodreporter.com/news/cannibal-movies-at-cannes-skin-894593",
+      "images": [],
+      "locations": [
+        "COLUMN"
+      ],
+      "current_location": "COLUMN"
+    },
+    {
+      "id": 41,
+      "text": "Plum Island's mysterious past makes way for uncertain future...",
+      "href": "http://www.bloomberg.com/politics/articles/2016-05-16/plum-island-s-mysterious-past-makes-way-for-an-uncertain-future",
+      "images": [],
+      "locations": [
+        "COLUMN"
+      ],
+      "current_location": "COLUMN"
+    }
+  ]
+}

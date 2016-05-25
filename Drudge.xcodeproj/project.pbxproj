@@ -7,13 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		322E1E2C1CF4034E004D071F /* DrudgeStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322E1E2B1CF4034E004D071F /* DrudgeStyleKit.swift */; };
+		322E1E311CF488A2004D071F /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 322E1E301CF488A2004D071F /* assets */; };
+		322E1E351CF4F49D004D071F /* logoLaunchIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 322E1E341CF4F49D004D071F /* logoLaunchIcon.png */; };
+		326AD5271CF1E41D00CF15FB /* articles2.json in Resources */ = {isa = PBXBuildFile; fileRef = 326AD5261CF1E41D00CF15FB /* articles2.json */; };
+		32C0333A1CEF8D0A00E4AF46 /* articles.json in Resources */ = {isa = PBXBuildFile; fileRef = 32C033391CEF8D0A00E4AF46 /* articles.json */; };
 		32C6DC911CE9345E00ADF8C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C6DC901CE9345E00ADF8C9 /* AppDelegate.swift */; };
-		32C6DC931CE9345E00ADF8C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C6DC921CE9345E00ADF8C9 /* ViewController.swift */; };
 		32C6DC961CE9345E00ADF8C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32C6DC941CE9345E00ADF8C9 /* Main.storyboard */; };
 		32C6DC981CE9345E00ADF8C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32C6DC971CE9345E00ADF8C9 /* Assets.xcassets */; };
 		32C6DC9B1CE9345E00ADF8C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32C6DC991CE9345E00ADF8C9 /* LaunchScreen.storyboard */; };
 		32C6DCA61CE9345E00ADF8C9 /* DrudgeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C6DCA51CE9345E00ADF8C9 /* DrudgeTests.swift */; };
 		32C6DCB11CE9345E00ADF8C9 /* DrudgeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C6DCB01CE9345E00ADF8C9 /* DrudgeUITests.swift */; };
+		32C6DCC11CE95AAE00ADF8C9 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C6DCC01CE95AAE00ADF8C9 /* ArticleTableViewCell.swift */; };
+		32E69C111CEB971400067B5E /* ArticleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E69C101CEB971400067B5E /* ArticleManager.swift */; };
+		32E69C181CEC893E00067B5E /* Image+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E69C141CEC893E00067B5E /* Image+CoreDataProperties.swift */; };
+		32E69C191CEC893E00067B5E /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E69C151CEC893E00067B5E /* Image.swift */; };
+		32E69C1A1CEC893E00067B5E /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E69C161CEC893E00067B5E /* Location+CoreDataProperties.swift */; };
+		32E69C1B1CEC893E00067B5E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E69C171CEC893E00067B5E /* Location.swift */; };
+		32E69C1D1CECEF7600067B5E /* UpdateIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E69C1C1CECEF7600067B5E /* UpdateIndicator.swift */; };
+		32F97BDE1CEB34A60023551D /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F97BDD1CEB34A60023551D /* CoreDataStack.swift */; };
+		32F97BE11CEB47800023551D /* Drudge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 32F97BDF1CEB47800023551D /* Drudge.xcdatamodeld */; };
+		32F97BE41CEB47E00023551D /* Article+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F97BE21CEB47E00023551D /* Article+CoreDataProperties.swift */; };
+		32F97BE51CEB47E00023551D /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F97BE31CEB47E00023551D /* Article.swift */; };
+		32F97BE71CEB64240023551D /* DrudgeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F97BE61CEB64240023551D /* DrudgeAPI.swift */; };
+		32F97BE91CEB6D610023551D /* ArticleDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F97BE81CEB6D610023551D /* ArticleDetailController.swift */; };
+		32F97BEC1CEB75AC0023551D /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C6DC921CE9345E00ADF8C9 /* ArticleViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +52,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		322E1E2B1CF4034E004D071F /* DrudgeStyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrudgeStyleKit.swift; sourceTree = "<group>"; };
+		322E1E301CF488A2004D071F /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
+		322E1E341CF4F49D004D071F /* logoLaunchIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logoLaunchIcon.png; path = assets/logoLaunchIcon.png; sourceTree = "<group>"; };
+		326AD5261CF1E41D00CF15FB /* articles2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = articles2.json; sourceTree = "<group>"; };
+		32C033391CEF8D0A00E4AF46 /* articles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = articles.json; sourceTree = "<group>"; };
 		32C6DC8D1CE9345E00ADF8C9 /* Drudge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drudge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32C6DC901CE9345E00ADF8C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		32C6DC921CE9345E00ADF8C9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		32C6DC921CE9345E00ADF8C9 /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		32C6DC951CE9345E00ADF8C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		32C6DC971CE9345E00ADF8C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32C6DC9A1CE9345E00ADF8C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +70,19 @@
 		32C6DCAC1CE9345E00ADF8C9 /* DrudgeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrudgeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		32C6DCB01CE9345E00ADF8C9 /* DrudgeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrudgeUITests.swift; sourceTree = "<group>"; };
 		32C6DCB21CE9345E00ADF8C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32C6DCC01CE95AAE00ADF8C9 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
+		32E69C101CEB971400067B5E /* ArticleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleManager.swift; sourceTree = "<group>"; };
+		32E69C141CEC893E00067B5E /* Image+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		32E69C151CEC893E00067B5E /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		32E69C161CEC893E00067B5E /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		32E69C171CEC893E00067B5E /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		32E69C1C1CECEF7600067B5E /* UpdateIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateIndicator.swift; sourceTree = "<group>"; };
+		32F97BDD1CEB34A60023551D /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		32F97BE01CEB47800023551D /* Drudge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Drudge.xcdatamodel; sourceTree = "<group>"; };
+		32F97BE21CEB47E00023551D /* Article+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Article+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		32F97BE31CEB47E00023551D /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		32F97BE61CEB64240023551D /* DrudgeAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrudgeAPI.swift; sourceTree = "<group>"; };
+		32F97BE81CEB6D610023551D /* ArticleDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleDetailController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +113,15 @@
 		32C6DC841CE9345E00ADF8C9 = {
 			isa = PBXGroup;
 			children = (
+				322E1E341CF4F49D004D071F /* logoLaunchIcon.png */,
+				322E1E301CF488A2004D071F /* assets */,
+				322E1E2B1CF4034E004D071F /* DrudgeStyleKit.swift */,
+				32E69C141CEC893E00067B5E /* Image+CoreDataProperties.swift */,
+				32E69C151CEC893E00067B5E /* Image.swift */,
+				32E69C161CEC893E00067B5E /* Location+CoreDataProperties.swift */,
+				32E69C171CEC893E00067B5E /* Location.swift */,
+				32F97BE21CEB47E00023551D /* Article+CoreDataProperties.swift */,
+				32F97BE31CEB47E00023551D /* Article.swift */,
 				32C6DC8F1CE9345E00ADF8C9 /* Drudge */,
 				32C6DCA41CE9345E00ADF8C9 /* DrudgeTests */,
 				32C6DCAF1CE9345E00ADF8C9 /* DrudgeUITests */,
@@ -98,11 +143,20 @@
 			isa = PBXGroup;
 			children = (
 				32C6DC901CE9345E00ADF8C9 /* AppDelegate.swift */,
-				32C6DC921CE9345E00ADF8C9 /* ViewController.swift */,
+				32C6DC921CE9345E00ADF8C9 /* ArticleViewController.swift */,
 				32C6DC941CE9345E00ADF8C9 /* Main.storyboard */,
+				32F97BDF1CEB47800023551D /* Drudge.xcdatamodeld */,
 				32C6DC971CE9345E00ADF8C9 /* Assets.xcassets */,
 				32C6DC991CE9345E00ADF8C9 /* LaunchScreen.storyboard */,
 				32C6DC9C1CE9345E00ADF8C9 /* Info.plist */,
+				32C6DCC01CE95AAE00ADF8C9 /* ArticleTableViewCell.swift */,
+				32F97BDD1CEB34A60023551D /* CoreDataStack.swift */,
+				32F97BE61CEB64240023551D /* DrudgeAPI.swift */,
+				32F97BE81CEB6D610023551D /* ArticleDetailController.swift */,
+				32E69C101CEB971400067B5E /* ArticleManager.swift */,
+				32E69C1C1CECEF7600067B5E /* UpdateIndicator.swift */,
+				32C033391CEF8D0A00E4AF46 /* articles.json */,
+				326AD5261CF1E41D00CF15FB /* articles2.json */,
 			);
 			path = Drudge;
 			sourceTree = "<group>";
@@ -193,6 +247,12 @@
 				TargetAttributes = {
 					32C6DC8C1CE9345E00ADF8C9 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 9C759Q4CFH;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					32C6DCA01CE9345E00ADF8C9 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -229,9 +289,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32C0333A1CEF8D0A00E4AF46 /* articles.json in Resources */,
+				326AD5271CF1E41D00CF15FB /* articles2.json in Resources */,
 				32C6DC9B1CE9345E00ADF8C9 /* LaunchScreen.storyboard in Resources */,
 				32C6DC981CE9345E00ADF8C9 /* Assets.xcassets in Resources */,
 				32C6DC961CE9345E00ADF8C9 /* Main.storyboard in Resources */,
+				322E1E311CF488A2004D071F /* assets in Resources */,
+				322E1E351CF4F49D004D071F /* logoLaunchIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,8 +320,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32C6DC931CE9345E00ADF8C9 /* ViewController.swift in Sources */,
+				32F97BDE1CEB34A60023551D /* CoreDataStack.swift in Sources */,
+				32E69C1D1CECEF7600067B5E /* UpdateIndicator.swift in Sources */,
+				32E69C191CEC893E00067B5E /* Image.swift in Sources */,
+				322E1E2C1CF4034E004D071F /* DrudgeStyleKit.swift in Sources */,
+				32C6DCC11CE95AAE00ADF8C9 /* ArticleTableViewCell.swift in Sources */,
+				32E69C111CEB971400067B5E /* ArticleManager.swift in Sources */,
+				32E69C1A1CEC893E00067B5E /* Location+CoreDataProperties.swift in Sources */,
 				32C6DC911CE9345E00ADF8C9 /* AppDelegate.swift in Sources */,
+				32E69C1B1CEC893E00067B5E /* Location.swift in Sources */,
+				32F97BE51CEB47E00023551D /* Article.swift in Sources */,
+				32F97BEC1CEB75AC0023551D /* ArticleViewController.swift in Sources */,
+				32F97BE11CEB47800023551D /* Drudge.xcdatamodeld in Sources */,
+				32F97BE91CEB6D610023551D /* ArticleDetailController.swift in Sources */,
+				32F97BE41CEB47E00023551D /* Article+CoreDataProperties.swift in Sources */,
+				32F97BE71CEB64240023551D /* DrudgeAPI.swift in Sources */,
+				32E69C181CEC893E00067B5E /* Image+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,10 +479,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Drudge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nerdwaller.Drudge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -412,10 +493,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Drudge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nerdwaller.Drudge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -484,6 +568,7 @@
 				32C6DCB71CE9345E00ADF8C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		32C6DCB81CE9345E00ADF8C9 /* Build configuration list for PBXNativeTarget "DrudgeTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +577,7 @@
 				32C6DCBA1CE9345E00ADF8C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		32C6DCBB1CE9345E00ADF8C9 /* Build configuration list for PBXNativeTarget "DrudgeUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,8 +586,22 @@
 				32C6DCBD1CE9345E00ADF8C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		32F97BDF1CEB47800023551D /* Drudge.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				32F97BE01CEB47800023551D /* Drudge.xcdatamodel */,
+			);
+			currentVersion = 32F97BE01CEB47800023551D /* Drudge.xcdatamodel */;
+			path = Drudge.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 32C6DC851CE9345E00ADF8C9 /* Project object */;
 }
