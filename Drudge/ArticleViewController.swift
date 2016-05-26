@@ -13,9 +13,10 @@ class ArticleViewController: UIViewController, UITableViewDataSource, UITableVie
 
   
   var articles:[Article]! = []
+  
   var coreDataStack:CoreDataStack!
   var articleManager:ArticleManager!
-  
+  var imageService:ImageService!
   
   var fetchRequest: NSFetchRequest!
   var asyncFetchRequest: NSAsynchronousFetchRequest!
@@ -153,24 +154,54 @@ class ArticleViewController: UIViewController, UITableViewDataSource, UITableVie
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("articleTableViewCell") as! ArticleTableViewCell
     let article = fetchedResultsController.objectAtIndexPath(indexPath) as! Article
-    
-  
+
     cell.title.text = article.title
     cell.urlSnippet.text = article.href
 
     if article.imageURL != nil && !article.imageURL!.isEmpty {
-      cell.updateWithImage(UIImage(named: "logoLaunchIcon.png"))
+
+       //have image need to load
+      cell.articleImageWidthConstraint.constant = cell.articleImage.frame.height
+      cell.spinner.startAnimating()
+      cell.spinner.hidden = false
+      
+      // Download the image data, which could take some time
+      let url = NSURL(string: article.imageURL!)!
+      
+      imageService.fetchImage(url, completion: {
+        (imageResult) -> Void in
+        
+        NSOperationQueue.mainQueue().addOperationWithBlock() {
+          
+          cell.spinner.stopAnimating()
+          cell.spinner.hidden = true
+          
+          switch imageResult {
+            case let .Success(image):
+              // When the request finishes, only update the cell if it's still visible
+              if let cell = self.tableView.cellForRowAtIndexPath(indexPath)
+                as? ArticleTableViewCell {
+                cell.articleImage.image = image
+              }
+            case .Failure(_):
+              //TODO find smaller image
+              cell.articleImage.image = UIImage(named: "logoLaunchIcon.png")
+          }
+          
+        }
+      })
+      
     } else {
-      cell.updateWithImage(nil)
+      //no image
+      cell.articleImageWidthConstraint.constant = 0
+      cell.spinner.stopAnimating()
+      cell.spinner.hidden = true
     }
     
     return cell
   }
   
   
-  func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    return 66
-  }
 
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     

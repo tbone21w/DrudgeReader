@@ -20,37 +20,15 @@ class ArticleTableViewCell: UITableViewCell {
   
   
   
-  func updateWithImage(image: UIImage?) {
-    if let imageToShow = image {
-      spinner.stopAnimating()
-      articleImage.image = imageToShow
-      articleImageWidthConstraint.constant = articleImage.frame.height
-    } else {
-      spinner.hidden = true
-      //spinner.startAnimating()
-      //articleImage.image = nil
-      //articleImage.hidden = true
-      //
-      
-      articleImageWidthConstraint.constant = 0
-    }
-  }
-  
-  func updateWithArticle(article: Article) {
-   
-  }
-  
   // MARK: Overrides
   override func awakeFromNib() {
     super.awakeFromNib()
-    
-    updateWithImage(nil)
+    articleImage.image = nil
   }
   
   
   override func prepareForReuse() {
     super.prepareForReuse()
-    
-    updateWithImage(nil)
+    articleImage.image = nil
   }
 }

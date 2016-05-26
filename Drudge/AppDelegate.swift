@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
   lazy var coreDataStack = CoreDataStack()
   
+  var imageService: ImageService!
   var articleManager:ArticleManager!
   var drudgeAPI:DrudgeAPI!
   
@@ -37,9 +38,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     drudgeAPI = DrudgeAPI()
     articleManager = ArticleManager(coreDataStack: coreDataStack,drudgeAPI: drudgeAPI)
-
     articleViewController.articleManager = articleManager
     
+    imageService = ImageService()
+    articleViewController.imageService = imageService
     
     //delete older data
     coreDataStack.cleanupOldArticles()
