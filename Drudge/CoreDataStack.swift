@@ -217,9 +217,11 @@ class CoreDataStack {
     fetchRequest.predicate = NSPredicate(format: "updatedAt < %@", cutOffDate!)
     
     let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-
+    deleteRequest.resultType = .ResultTypeObjectIDs
+    
     do {
-      try privateContext.executeRequest(deleteRequest)
+      //TODO grab IDs and remove photos for removed items
+      try context.executeRequest(deleteRequest)
       try context.save()
     } catch {
       print (error)

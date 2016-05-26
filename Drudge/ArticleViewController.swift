@@ -41,6 +41,8 @@ class ArticleViewController: UIViewController, UITableViewDataSource, UITableVie
    override func viewDidLoad() {
     super.viewDidLoad()
 
+    tableView.scrollIndicatorInsets = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0);
+    
     //setup tableview
     tableView.dataSource = self
     
@@ -149,19 +151,25 @@ class ArticleViewController: UIViewController, UITableViewDataSource, UITableVie
   
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("articleTableViewCell")!
-  
+    let cell = tableView.dequeueReusableCellWithIdentifier("articleTableViewCell") as! ArticleTableViewCell
     let article = fetchedResultsController.objectAtIndexPath(indexPath) as! Article
     
-    //style cell
-    let selectedView = UIView()
-    
-    selectedView.backgroundColor = UIColor.darkGrayColor()
-    cell.selectedBackgroundView? = selectedView
   
-    cell.textLabel?.text = article.title
+    cell.title.text = article.title
+    cell.urlSnippet.text = article.href
+
+    if article.imageURL != nil && !article.imageURL!.isEmpty {
+      cell.updateWithImage(UIImage(named: "logoLaunchIcon.png"))
+    } else {
+      cell.updateWithImage(nil)
+    }
     
     return cell
+  }
+  
+  
+  func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    return 66
   }
 
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

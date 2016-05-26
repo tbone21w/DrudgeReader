@@ -10,6 +10,8 @@
 		322E1E2C1CF4034E004D071F /* DrudgeStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322E1E2B1CF4034E004D071F /* DrudgeStyleKit.swift */; };
 		322E1E311CF488A2004D071F /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 322E1E301CF488A2004D071F /* assets */; };
 		322E1E351CF4F49D004D071F /* logoLaunchIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 322E1E341CF4F49D004D071F /* logoLaunchIcon.png */; };
+		3262A3711CF5F73200CC9AFA /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3262A3701CF5F73200CC9AFA /* ImageStore.swift */; };
+		3262A3731CF5FA5C00CC9AFA /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3262A3721CF5FA5C00CC9AFA /* ImageService.swift */; };
 		326AD5271CF1E41D00CF15FB /* articles2.json in Resources */ = {isa = PBXBuildFile; fileRef = 326AD5261CF1E41D00CF15FB /* articles2.json */; };
 		32C0333A1CEF8D0A00E4AF46 /* articles.json in Resources */ = {isa = PBXBuildFile; fileRef = 32C033391CEF8D0A00E4AF46 /* articles.json */; };
 		32C6DC911CE9345E00ADF8C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C6DC901CE9345E00ADF8C9 /* AppDelegate.swift */; };
@@ -55,6 +57,8 @@
 		322E1E2B1CF4034E004D071F /* DrudgeStyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrudgeStyleKit.swift; sourceTree = "<group>"; };
 		322E1E301CF488A2004D071F /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		322E1E341CF4F49D004D071F /* logoLaunchIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logoLaunchIcon.png; path = assets/logoLaunchIcon.png; sourceTree = "<group>"; };
+		3262A3701CF5F73200CC9AFA /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
+		3262A3721CF5FA5C00CC9AFA /* ImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		326AD5261CF1E41D00CF15FB /* articles2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = articles2.json; sourceTree = "<group>"; };
 		32C033391CEF8D0A00E4AF46 /* articles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = articles.json; sourceTree = "<group>"; };
 		32C6DC8D1CE9345E00ADF8C9 /* Drudge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drudge.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,6 +169,8 @@
 				32E69C1C1CECEF7600067B5E /* UpdateIndicator.swift */,
 				32C033391CEF8D0A00E4AF46 /* articles.json */,
 				326AD5261CF1E41D00CF15FB /* articles2.json */,
+				3262A3701CF5F73200CC9AFA /* ImageStore.swift */,
+				3262A3721CF5FA5C00CC9AFA /* ImageService.swift */,
 			);
 			path = Drudge;
 			sourceTree = "<group>";
@@ -330,6 +336,8 @@
 			files = (
 				32F97BDE1CEB34A60023551D /* CoreDataStack.swift in Sources */,
 				32E69C1D1CECEF7600067B5E /* UpdateIndicator.swift in Sources */,
+				3262A3731CF5FA5C00CC9AFA /* ImageService.swift in Sources */,
+				3262A3711CF5F73200CC9AFA /* ImageStore.swift in Sources */,
 				32E69C191CEC893E00067B5E /* Image.swift in Sources */,
 				322E1E2C1CF4034E004D071F /* DrudgeStyleKit.swift in Sources */,
 				32C6DCC11CE95AAE00ADF8C9 /* ArticleTableViewCell.swift in Sources */,

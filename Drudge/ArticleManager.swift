@@ -19,7 +19,6 @@ class ArticleManager {
     case Failure(ErrorType)
   }
   
-  
   enum PhotoError: ErrorType {
     case ImageCreationError
   }
