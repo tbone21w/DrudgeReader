@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ArticleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ArticleViewController: UIViewController,UITableViewDataSource, UITableViewDelegate, CellGestureDelegate {
 
   
   var articles:[Article]! = []
@@ -78,6 +78,7 @@ class ArticleViewController: UIViewController, UITableViewDataSource, UITableVie
 
     //setup pull to refresh
     tableView.addSubview(refreshControl)
+    
   }
   
   func handleRefresh(refreshControl: UIRefreshControl) {
@@ -151,8 +152,15 @@ class ArticleViewController: UIViewController, UITableViewDataSource, UITableVie
   }
   
   
+  func tableViewCellSubViewTapped(cell:UITableViewCell) {
+    performSegueWithIdentifier("showImage", sender: cell)
+  }
+  
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("articleTableViewCell") as! ArticleTableViewCell
+    
+    cell.delegate = self
+    
     let article = fetchedResultsController.objectAtIndexPath(indexPath) as! Article
 
     cell.title.text = article.title
@@ -214,6 +222,13 @@ class ArticleViewController: UIViewController, UITableViewDataSource, UITableVie
         article = fetchedResultsController.objectAtIndexPath(indexPath) as! Article
         vc.article = article
       }
+    }
+    
+    if segue.identifier == "showImage" {
+      let vc = segue.destinationViewController as! ImageViewController
+      
+      let cell = sender as! ArticleTableViewCell
+      vc.image = cell.articleImage.image
     }
   }
   

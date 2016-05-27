@@ -36,7 +36,7 @@ enum DrudgeAPIError: ErrorType {
  */
 class DrudgeAPI {
   
-  private static let baseURL = "http://45.55.175.213/api/v1"
+  private static let baseURL = "https://drudge.herokuapp.com/api/v1/"
   
 
   //"2016-05-22T08:17:08.595288-04:00"
@@ -57,14 +57,28 @@ class DrudgeAPI {
     
     if let additionalParams = parameters {
       for (key, value) in additionalParams {
-        let item = NSURLQueryItem(name: key, value: value)
+        //encode query string
+        guard let
+          escapedKey = key.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet()),
+          escapedValue = value.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        else {
+          break
+        }
+        
+        let item = NSURLQueryItem(name: escapedKey, value: escapedValue)
         queryItems.append(item)
       }
     }
     
+   
+    
     components.queryItems = queryItems
 
-    return components.URL!.URLByAppendingPathComponent(path.rawValue)
+    let url = components.URL!.URLByAppendingPathComponent(path.rawValue)
+    
+   
+
+    return url
   }
   
   
@@ -94,19 +108,10 @@ class DrudgeAPI {
         
         let result = articleFromJSONData(inContext: context, json: articleJSON)
         
-        //articleFromJSONData(inContext: context, json: articleJSON)
-        switch  result {
-        case let .Success(article):
+        if let article = result {
           articles.append(article)
-        case let .Failure(error):
-          let e = error as! DrudgeAPIError
-          //ignore duplicate objects
-          if e != DrudgeAPIError.DuplicateObject {
-            return .Failure(e)
-          }
         }
       }
-      
       
       print("Number of Articles: \(articles.count)")
       
@@ -118,8 +123,7 @@ class DrudgeAPI {
     }
   }
   
-  
-  func articleFromJSONData(inContext context: NSManagedObjectContext, json: [String : AnyObject]) -> ArticleSerialization {
+  private func articleFromJSONData(inContext context: NSManagedObjectContext, json: [String : AnyObject]) -> Article? {
     
     guard let
       currentLocation = json["location"] as? String,
@@ -133,16 +137,34 @@ class DrudgeAPI {
       updatedDate = DrudgeAPI.formatterISO8601.dateFromString(updated)
       else {
         print("invalid JSON string")
-        return .Failure(DrudgeAPIError.InvalidJSONData)
+        return nil
     }
     
-
+    var article:Article?
     
     //check for valid object
-    if !containsArticle(inContext: context, id: id.intValue){
-      let articleEntity = NSEntityDescription.entityForName("Article", inManagedObjectContext: context)
-      let article = Article(entity: articleEntity!, insertIntoManagedObjectContext: context)
+    if let articleFromDB = getArticleById(inContext: context, id: id.intValue) {
+      article = articleFromDB
       
+      //make sure we have an update otherwise NSFetchedResultsController will see an update and the Update button will show
+      if id == article?.id
+                && imageURL == article?.imageURL
+                && currentLocation == article?.location
+                && createdDate == article?.createdAt
+                && updatedDate == article?.updatedAt
+                && href == article?.href
+                && text == article?.title {
+        
+        return nil
+      }
+      
+    } else {
+      let articleEntity = NSEntityDescription.entityForName("Article", inManagedObjectContext: context)
+      article = Article(entity: articleEntity!, insertIntoManagedObjectContext: context)
+    }
+  
+    if let article = article {
+      //set fields
       article.id = id
       article.href = href
       article.title = text
@@ -150,13 +172,32 @@ class DrudgeAPI {
       article.imageURL = imageURL
       article.createdAt = createdDate
       article.updatedAt = updatedDate
-      
-      return .Success(article)
     }
-  
-    print("Found Duplicate ID: \(id)")
-    return .Failure(DrudgeAPIError.DuplicateObject)
+
+    return article
+
   }
+  
+  func getArticleById(inContext context: NSManagedObjectContext, id: Int32) -> Article? {
+    let fetchRequest = NSFetchRequest(entityName: "Article")
+    
+    fetchRequest.resultType = .ManagedObjectResultType
+    fetchRequest.fetchLimit = 1
+    
+    fetchRequest.predicate = NSPredicate(format: "id = %D", id)
+    
+    var article:Article?
+    
+    do {
+      let results = try context.executeFetchRequest(fetchRequest) as! [Article]
+      article = results.first
+    } catch let error as NSError {
+      print("Could not fetch \(error), \(error.userInfo)")
+    }
+    
+    return article
+  }
+  
   
   func containsArticle(inContext context: NSManagedObjectContext, id: Int32 ) -> Bool {
     let fetchRequest = NSFetchRequest(entityName: "Article")
@@ -178,11 +219,6 @@ class DrudgeAPI {
     return count > 0
   }
   
-  
-//  class func snapshotsURL() -> NSURL {
-//    return drudgeURL(path: .SnapShots, parameters: nil)
-//  }
-
   class func latestArticles() -> NSURL {
     return drudgeURL(path: .LatestArticles, parameters: nil)
   }
@@ -191,20 +227,5 @@ class DrudgeAPI {
     return drudgeURL(path: .LatestArticles, parameters: ["since": formattedDate])
   }
   
-//  class func articlesForSnapshot(snapshotID: Int) -> NSURL {
-//    return drudgeURL(path: .Articles, parameters: ["snapshot_id": String(snapshotID)])
-//  }
-//
-//  class func articleURL(articleID: Int) -> NSURL {
-//    let url = drudgeURL(path: .Articles, parameters: nil)
-//
-//    return url.URLByAppendingPathComponent(String(articleID))
-//  }
-//  
-//  class func snapshotURL(snapshotID: Int) -> NSURL {
-//    let snapshotParam = "snapshots"
-//    
-//    let url = drudgeURL(path: .Articles, parameters: [snapshotParam : String(snapshotID)])
-//    return url
-//  }
 }
+

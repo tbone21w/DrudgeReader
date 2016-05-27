@@ -18,6 +18,13 @@ class ArticleTableViewCell: UITableViewCell {
   
   @IBOutlet weak var articleImageWidthConstraint: NSLayoutConstraint!
   
+  var delegate: CellGestureDelegate?
+  
+  func handleImageTap(recognizer:UIGestureRecognizer) {
+    if recognizer.state == .Ended {
+        delegate?.tableViewCellSubViewTapped(self)
+    }
+  }
   
   
   // MARK: Overrides
@@ -30,5 +37,14 @@ class ArticleTableViewCell: UITableViewCell {
   override func prepareForReuse() {
     super.prepareForReuse()
     articleImage.image = nil
+    
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleImageTap))
+    articleImage.userInteractionEnabled = true
+    articleImage.addGestureRecognizer((tapGesture))
+
   }
+}
+
+protocol CellGestureDelegate {
+  func tableViewCellSubViewTapped(cell:UITableViewCell)
 }

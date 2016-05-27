@@ -43,6 +43,7 @@ class ArticleManager {
     
     let url = DrudgeAPI.articlesSince(formattedDate)
     let request = NSURLRequest(URL: url)
+    
     print("Request : \(url.absoluteString)")
     
     //Async, need a way to tell UI we are working and then update NSFetchedResultsController??
@@ -54,6 +55,9 @@ class ArticleManager {
       //if we successfully fetched articles
       if case let .Success(articles) = result {
         
+        
+        //TODO this is always setting to true but we insert or update in the drudgeAPI.articlesFromJSONData, 
+        //updated articels are not new
         for article in articles {
           article.isNew = true
         }

@@ -21,6 +21,7 @@
 		32C6DCA61CE9345E00ADF8C9 /* DrudgeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C6DCA51CE9345E00ADF8C9 /* DrudgeTests.swift */; };
 		32C6DCB11CE9345E00ADF8C9 /* DrudgeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C6DCB01CE9345E00ADF8C9 /* DrudgeUITests.swift */; };
 		32C6DCC11CE95AAE00ADF8C9 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C6DCC01CE95AAE00ADF8C9 /* ArticleTableViewCell.swift */; };
+		32D57FB31CF6ABAA009D7284 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D57FB21CF6ABAA009D7284 /* ImageViewController.swift */; };
 		32E69C111CEB971400067B5E /* ArticleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E69C101CEB971400067B5E /* ArticleManager.swift */; };
 		32E69C181CEC893E00067B5E /* Image+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E69C141CEC893E00067B5E /* Image+CoreDataProperties.swift */; };
 		32E69C191CEC893E00067B5E /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E69C151CEC893E00067B5E /* Image.swift */; };
@@ -75,6 +76,7 @@
 		32C6DCB01CE9345E00ADF8C9 /* DrudgeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrudgeUITests.swift; sourceTree = "<group>"; };
 		32C6DCB21CE9345E00ADF8C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32C6DCC01CE95AAE00ADF8C9 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
+		32D57FB21CF6ABAA009D7284 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		32E69C101CEB971400067B5E /* ArticleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleManager.swift; sourceTree = "<group>"; };
 		32E69C141CEC893E00067B5E /* Image+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		32E69C151CEC893E00067B5E /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				326AD5261CF1E41D00CF15FB /* articles2.json */,
 				3262A3701CF5F73200CC9AFA /* ImageStore.swift */,
 				3262A3721CF5FA5C00CC9AFA /* ImageService.swift */,
+				32D57FB21CF6ABAA009D7284 /* ImageViewController.swift */,
 			);
 			path = Drudge;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				32F97BE11CEB47800023551D /* Drudge.xcdatamodeld in Sources */,
 				32F97BE91CEB6D610023551D /* ArticleDetailController.swift in Sources */,
 				32F97BE41CEB47E00023551D /* Article+CoreDataProperties.swift in Sources */,
+				32D57FB31CF6ABAA009D7284 /* ImageViewController.swift in Sources */,
 				32F97BE71CEB64240023551D /* DrudgeAPI.swift in Sources */,
 				32E69C181CEC893E00067B5E /* Image+CoreDataProperties.swift in Sources */,
 			);

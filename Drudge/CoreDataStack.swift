@@ -131,6 +131,7 @@ class CoreDataStack {
     return count
   }
   
+
   
   func getNewArticleCount() -> Int {
     let fetchRequest = NSFetchRequest(entityName: "Article")
