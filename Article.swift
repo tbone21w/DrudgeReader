@@ -13,5 +13,13 @@ import CoreData
 class Article: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
-
+  func getImageKey() -> String? {
+    if let imageurl = imageURL {
+      let url = NSURL(string: imageurl)!
+      return "\(id)\(url.pathComponents?.last)"
+    } else {
+      return nil
+    }
+    
+  }
 }

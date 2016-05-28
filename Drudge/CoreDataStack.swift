@@ -202,10 +202,27 @@ class CoreDataStack {
     }
     
   }
+
   
-  //TODO need a preference on how many days to keep for now 30
-  func cleanupOldArticles() {
+  func getArticlesToDelete() -> [Article]? {
+    let fetchRequest = getDeleteFetchRequest()
     
+    var articles:[Article]?
+    
+    do {
+        let results = try privateContext.executeFetchRequest(fetchRequest)
+      
+      articles = results as? [Article]
+      
+    } catch let error as NSError {
+      print("\(error)")
+    }
+    
+    return articles
+  }
+  
+  
+  func getDeleteFetchRequest() -> NSFetchRequest {
     let fetchRequest = NSFetchRequest(entityName: "Article")
     
     let today = NSDate()
@@ -215,18 +232,29 @@ class CoreDataStack {
       toDate: today,
       options: NSCalendarOptions(rawValue: 0))
     
-    fetchRequest.predicate = NSPredicate(format: "updatedAt < %@", cutOffDate!)
+      fetchRequest.predicate = NSPredicate(format: "updatedAt < %@", cutOffDate!)
+    
+    return fetchRequest
+  }
+  
+  //TODO need a preference on how many days to keep for now 30
+  func cleanupOldArticles() {
+    
+    let fetchRequest = getDeleteFetchRequest()
     
     let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-    deleteRequest.resultType = .ResultTypeObjectIDs
+    deleteRequest.resultType = .ResultTypeCount
     
     do {
       //TODO grab IDs and remove photos for removed items
-      try context.executeRequest(deleteRequest)
-      try context.save()
+        let deletedArticles = try context.executeRequest(deleteRequest)
+        print("Deleted Articles \(deletedArticles)")
+        try context.save()
     } catch {
       print (error)
     }
   }
+  
+  
   
 }

@@ -117,7 +117,6 @@ class DrudgeAPI {
       
       return .Success(articles)
     } catch let error {
-      //TODO return .Failure(error)
       print("Error serializing data to JSON \(error)")
       return .Failure(DrudgeAPIError.InvalidJSONData)
     }
@@ -189,8 +188,8 @@ class DrudgeAPI {
     var article:Article?
     
     do {
-      let results = try context.executeFetchRequest(fetchRequest) as! [Article]
-      article = results.first
+      let results = try context.executeFetchRequest(fetchRequest) as? [Article]
+      article = results?.first
     } catch let error as NSError {
       print("Could not fetch \(error), \(error.userInfo)")
     }

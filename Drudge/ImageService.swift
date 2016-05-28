@@ -20,29 +20,55 @@ enum ImageError: ErrorType {
 
 class ImageService {
   
+  var coreDataStack:CoreDataStack!
+  var imageStore:ImageStore!
+  
   let session: NSURLSession = {
     let config = NSURLSessionConfiguration.defaultSessionConfiguration()
     return NSURLSession(configuration: config)
   }()
-
-  func fetchImage(imageURL: NSURL, completion: (ImageResult) -> Void) {
-    let request = NSURLRequest(URL: imageURL)
+  
+  
+  func fetchImage(article: Article, completion: (ImageResult) -> Void) {
     
-    let task = session.dataTaskWithRequest(request) {
+    let url = NSURL(string: article.imageURL!)!
+    let request = NSURLRequest(URL: url)
+    
+    print("IMAGE KEY to find: \(article.getImageKey())")
+    
+    //check cache first
+    if let imageKey = article.getImageKey() {
+      if let image = imageStore.imageForKey(imageKey) {
+        print("RETURN Image from store")
+        completion(.Success(image))
+        return
+      }
+    }
+    
+    
+    //fetch image
+    let defaultSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+    
+    let task = defaultSession.dataTaskWithRequest(request) {
       (data, response, error) -> Void in
       
       let result = self.processImageRequest(data: data, error: error)
       
-//      if case let .Success(image) = result {
-//        photo.image = image
-//        self.imageStore.setImage(image, forKey: photoKey)
-//      }
+            if case let .Success(image) = result {
+              if let imageKey = article.getImageKey() {
+                print("Saved IMAGE KEY: \(imageKey)")
+                
+                //save image & entity
+                self.imageStore.setImage(image, forKey: imageKey)
+              }
+            }
       
       completion(result)
     }
     
     task.resume()
   }
+  
   
   private func processImageRequest(data data: NSData?, error: NSError?) -> ImageResult {
     

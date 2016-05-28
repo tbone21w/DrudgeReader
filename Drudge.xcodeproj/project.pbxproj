@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		322739A11CF8AD3D00820A35 /* Image+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3227399E1CF8AD3D00820A35 /* Image+CoreDataProperties.swift */; };
+		322739A21CF8AD3D00820A35 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3227399F1CF8AD3D00820A35 /* Location+CoreDataProperties.swift */; };
+		322739A31CF8AD3D00820A35 /* Article+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322739A01CF8AD3D00820A35 /* Article+CoreDataProperties.swift */; };
 		322E1E2C1CF4034E004D071F /* DrudgeStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322E1E2B1CF4034E004D071F /* DrudgeStyleKit.swift */; };
 		322E1E311CF488A2004D071F /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 322E1E301CF488A2004D071F /* assets */; };
 		322E1E351CF4F49D004D071F /* logoLaunchIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 322E1E341CF4F49D004D071F /* logoLaunchIcon.png */; };
@@ -23,14 +26,11 @@
 		32C6DCC11CE95AAE00ADF8C9 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C6DCC01CE95AAE00ADF8C9 /* ArticleTableViewCell.swift */; };
 		32D57FB31CF6ABAA009D7284 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D57FB21CF6ABAA009D7284 /* ImageViewController.swift */; };
 		32E69C111CEB971400067B5E /* ArticleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E69C101CEB971400067B5E /* ArticleManager.swift */; };
-		32E69C181CEC893E00067B5E /* Image+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E69C141CEC893E00067B5E /* Image+CoreDataProperties.swift */; };
 		32E69C191CEC893E00067B5E /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E69C151CEC893E00067B5E /* Image.swift */; };
-		32E69C1A1CEC893E00067B5E /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E69C161CEC893E00067B5E /* Location+CoreDataProperties.swift */; };
 		32E69C1B1CEC893E00067B5E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E69C171CEC893E00067B5E /* Location.swift */; };
 		32E69C1D1CECEF7600067B5E /* UpdateIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E69C1C1CECEF7600067B5E /* UpdateIndicator.swift */; };
 		32F97BDE1CEB34A60023551D /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F97BDD1CEB34A60023551D /* CoreDataStack.swift */; };
 		32F97BE11CEB47800023551D /* Drudge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 32F97BDF1CEB47800023551D /* Drudge.xcdatamodeld */; };
-		32F97BE41CEB47E00023551D /* Article+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F97BE21CEB47E00023551D /* Article+CoreDataProperties.swift */; };
 		32F97BE51CEB47E00023551D /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F97BE31CEB47E00023551D /* Article.swift */; };
 		32F97BE71CEB64240023551D /* DrudgeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F97BE61CEB64240023551D /* DrudgeAPI.swift */; };
 		32F97BE91CEB6D610023551D /* ArticleDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F97BE81CEB6D610023551D /* ArticleDetailController.swift */; };
@@ -55,6 +55,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3227399E1CF8AD3D00820A35 /* Image+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		3227399F1CF8AD3D00820A35 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		322739A01CF8AD3D00820A35 /* Article+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Article+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		322E1E2B1CF4034E004D071F /* DrudgeStyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrudgeStyleKit.swift; sourceTree = "<group>"; };
 		322E1E301CF488A2004D071F /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		322E1E341CF4F49D004D071F /* logoLaunchIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logoLaunchIcon.png; path = assets/logoLaunchIcon.png; sourceTree = "<group>"; };
@@ -78,14 +81,11 @@
 		32C6DCC01CE95AAE00ADF8C9 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
 		32D57FB21CF6ABAA009D7284 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		32E69C101CEB971400067B5E /* ArticleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleManager.swift; sourceTree = "<group>"; };
-		32E69C141CEC893E00067B5E /* Image+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		32E69C151CEC893E00067B5E /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
-		32E69C161CEC893E00067B5E /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		32E69C171CEC893E00067B5E /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		32E69C1C1CECEF7600067B5E /* UpdateIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateIndicator.swift; sourceTree = "<group>"; };
 		32F97BDD1CEB34A60023551D /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		32F97BE01CEB47800023551D /* Drudge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Drudge.xcdatamodel; sourceTree = "<group>"; };
-		32F97BE21CEB47E00023551D /* Article+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Article+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		32F97BE31CEB47E00023551D /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		32F97BE61CEB64240023551D /* DrudgeAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrudgeAPI.swift; sourceTree = "<group>"; };
 		32F97BE81CEB6D610023551D /* ArticleDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleDetailController.swift; sourceTree = "<group>"; };
@@ -116,26 +116,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3262A36F1CF5CE0200CC9AFA /* model */ = {
-			isa = PBXGroup;
-			children = (
-				32E69C141CEC893E00067B5E /* Image+CoreDataProperties.swift */,
-				32E69C151CEC893E00067B5E /* Image.swift */,
-				32E69C161CEC893E00067B5E /* Location+CoreDataProperties.swift */,
-				32E69C171CEC893E00067B5E /* Location.swift */,
-				32F97BE21CEB47E00023551D /* Article+CoreDataProperties.swift */,
-				32F97BE31CEB47E00023551D /* Article.swift */,
-			);
-			name = model;
-			sourceTree = "<group>";
-		};
 		32C6DC841CE9345E00ADF8C9 = {
 			isa = PBXGroup;
 			children = (
+				32E69C151CEC893E00067B5E /* Image.swift */,
+				32E69C171CEC893E00067B5E /* Location.swift */,
+				32F97BE31CEB47E00023551D /* Article.swift */,
+				3227399E1CF8AD3D00820A35 /* Image+CoreDataProperties.swift */,
+				3227399F1CF8AD3D00820A35 /* Location+CoreDataProperties.swift */,
+				322739A01CF8AD3D00820A35 /* Article+CoreDataProperties.swift */,
 				322E1E341CF4F49D004D071F /* logoLaunchIcon.png */,
 				322E1E301CF488A2004D071F /* assets */,
 				322E1E2B1CF4034E004D071F /* DrudgeStyleKit.swift */,
-				3262A36F1CF5CE0200CC9AFA /* model */,
 				32C6DC8F1CE9345E00ADF8C9 /* Drudge */,
 				32C6DCA41CE9345E00ADF8C9 /* DrudgeTests */,
 				32C6DCAF1CE9345E00ADF8C9 /* DrudgeUITests */,
@@ -345,17 +337,17 @@
 				322E1E2C1CF4034E004D071F /* DrudgeStyleKit.swift in Sources */,
 				32C6DCC11CE95AAE00ADF8C9 /* ArticleTableViewCell.swift in Sources */,
 				32E69C111CEB971400067B5E /* ArticleManager.swift in Sources */,
-				32E69C1A1CEC893E00067B5E /* Location+CoreDataProperties.swift in Sources */,
+				322739A21CF8AD3D00820A35 /* Location+CoreDataProperties.swift in Sources */,
 				32C6DC911CE9345E00ADF8C9 /* AppDelegate.swift in Sources */,
 				32E69C1B1CEC893E00067B5E /* Location.swift in Sources */,
+				322739A11CF8AD3D00820A35 /* Image+CoreDataProperties.swift in Sources */,
 				32F97BE51CEB47E00023551D /* Article.swift in Sources */,
 				32F97BEC1CEB75AC0023551D /* ArticleViewController.swift in Sources */,
 				32F97BE11CEB47800023551D /* Drudge.xcdatamodeld in Sources */,
+				322739A31CF8AD3D00820A35 /* Article+CoreDataProperties.swift in Sources */,
 				32F97BE91CEB6D610023551D /* ArticleDetailController.swift in Sources */,
-				32F97BE41CEB47E00023551D /* Article+CoreDataProperties.swift in Sources */,
 				32D57FB31CF6ABAA009D7284 /* ImageViewController.swift in Sources */,
 				32F97BE71CEB64240023551D /* DrudgeAPI.swift in Sources */,
-				32E69C181CEC893E00067B5E /* Image+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

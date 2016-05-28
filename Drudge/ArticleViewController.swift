@@ -11,7 +11,6 @@ import CoreData
 
 class ArticleViewController: UIViewController,UITableViewDataSource, UITableViewDelegate, CellGestureDelegate {
 
-  
   var articles:[Article]! = []
   
   var coreDataStack:CoreDataStack!
@@ -169,31 +168,27 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
     if article.imageURL != nil && !article.imageURL!.isEmpty {
 
        //have image need to load
-      cell.articleImageWidthConstraint.constant = cell.articleImage.frame.height
-      cell.spinner.startAnimating()
-      cell.spinner.hidden = false
+      configureCellImageVisibleFetching(cell)
       
       // Download the image data, which could take some time
-      let url = NSURL(string: article.imageURL!)!
-      
-      imageService.fetchImage(url, completion: {
+      imageService.fetchImage(article, completion: {
         (imageResult) -> Void in
         
         NSOperationQueue.mainQueue().addOperationWithBlock() {
           
-          cell.spinner.stopAnimating()
-          cell.spinner.hidden = true
-          
+          //image fetch operation done
           switch imageResult {
             case let .Success(image):
               // When the request finishes, only update the cell if it's still visible
+              self.stopAnimatingCellSpinner(cell)
+              
               if let cell = self.tableView.cellForRowAtIndexPath(indexPath)
                 as? ArticleTableViewCell {
                 cell.articleImage.image = image
               }
-            case .Failure(_):
-              //TODO find smaller image
-              cell.articleImage.image = UIImage(named: "logoLaunchIcon.png")
+          case .Failure(_):
+            //no value to indicatea fail to user, could even be TLS version
+            self.configureCellImageHidden(cell)
           }
           
         }
@@ -201,15 +196,29 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
       
     } else {
       //no image
-      cell.articleImageWidthConstraint.constant = 0
-      cell.spinner.stopAnimating()
-      cell.spinner.hidden = true
+      configureCellImageHidden(cell)
     }
     
     return cell
   }
   
+
   
+  func configureCellImageVisibleFetching(cell: ArticleTableViewCell) {
+    cell.articleImageWidthConstraint.constant = cell.articleImage.frame.height
+    cell.spinner.startAnimating()
+    cell.spinner.hidden = false
+  }
+  
+  func configureCellImageHidden(cell: ArticleTableViewCell) {
+    cell.articleImageWidthConstraint.constant = 0
+    stopAnimatingCellSpinner(cell)
+  }
+  
+  func stopAnimatingCellSpinner(cell: ArticleTableViewCell) {
+    cell.spinner.stopAnimating()
+    cell.spinner.hidden = true
+  }
 
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     

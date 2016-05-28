@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   lazy var coreDataStack = CoreDataStack()
   
   var imageService: ImageService!
+  var imageStore: ImageStore!
   var articleManager:ArticleManager!
   var drudgeAPI:DrudgeAPI!
   
@@ -41,10 +42,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     articleViewController.articleManager = articleManager
     
     imageService = ImageService()
+    imageStore = ImageStore()
+    imageService.coreDataStack = coreDataStack
+    imageService.imageStore = imageStore
+    
     articleViewController.imageService = imageService
     
     //delete older data
-    coreDataStack.cleanupOldArticles()
+    removeArticleImages()
     
     let articleCount = coreDataStack.getArticleCount()
     
@@ -70,7 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     print("Latest Articles URL \(url.absoluteString)")
     
 
-    setupForgroundProcessing()
+    setupActiveModeBackgroundProcessing()
     
     //set background fetch
     UIApplication
@@ -80,6 +85,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     return true
   }
   
+  
+  func removeArticleImages() {
+    let articlesToDelete = coreDataStack.getArticlesToDelete()
+    
+    //remove any images related to articles
+    if let articles = articlesToDelete {
+      for article in articles {
+        if let key = article.getImageKey() {
+          imageStore.deleteImageForKey(key)
+        }
+      }
+    }
+    
+    //remove images
+    coreDataStack.cleanupOldArticles()
+  }
 
   func applicationWillResignActive(application: UIApplication) {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -105,7 +126,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     UIApplication.sharedApplication().applicationIconBadgeNumber = 0
     applicationRunningInBackground = false
     
-    setupForgroundProcessing()
+    setupActiveModeBackgroundProcessing()
     
   }
 
@@ -153,7 +174,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
   }
   
-  func setupForgroundProcessing() {
+  func setupActiveModeBackgroundProcessing() {
     print("Adding Timer")
     timer = NSTimer(timeInterval: (5.0 * 60), target: self, selector: #selector(checkForNewArticles), userInfo: nil, repeats: true)
     
@@ -221,7 +242,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let results =
       coreDataStack.context.countForFetchRequest(fetchRequest,
                                                  error: &error)
-    
     if (results >= 0) {
       
       do {

@@ -16,6 +16,7 @@ class ArticleTableViewCell: UITableViewCell {
   @IBOutlet weak var articleImage: UIImageView!
   @IBOutlet weak var spinner: UIActivityIndicatorView!
   
+  @IBOutlet weak var timeAgoLabel: UILabel!
   @IBOutlet weak var articleImageWidthConstraint: NSLayoutConstraint!
   
   var delegate: CellGestureDelegate?

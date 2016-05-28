@@ -92,6 +92,7 @@
                                             <outlet property="articleImage" destination="z57-ez-BcU" id="cJ8-Gq-dSb"/>
                                             <outlet property="articleImageWidthConstraint" destination="YAB-r0-7lH" id="gpe-PR-5aF"/>
                                             <outlet property="spinner" destination="Zt9-V0-rL7" id="a84-IB-Rtt"/>
+                                            <outlet property="timeAgoLabel" destination="vp6-Pf-Q58" id="0Kp-zN-LuO"/>
                                             <outlet property="title" destination="a6b-27-xrt" id="EiM-D6-8WH"/>
                                             <outlet property="urlSnippet" destination="gW1-j1-z78" id="95i-Fl-xsd"/>
                                             <segue destination="Y1o-Q1-GOV" kind="show" identifier="showArticleDetail" id="eKC-QE-yaT"/>
