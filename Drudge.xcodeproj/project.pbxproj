@@ -13,6 +13,8 @@
 		322E1E2C1CF4034E004D071F /* DrudgeStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322E1E2B1CF4034E004D071F /* DrudgeStyleKit.swift */; };
 		322E1E311CF488A2004D071F /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 322E1E301CF488A2004D071F /* assets */; };
 		322E1E351CF4F49D004D071F /* logoLaunchIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 322E1E341CF4F49D004D071F /* logoLaunchIcon.png */; };
+		324C85301CFB7700007A1C9E /* NSDate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324C852E1CFB7700007A1C9E /* NSDate+Extension.swift */; };
+		324C85311CFB7700007A1C9E /* NSDateTimeAgo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 324C852F1CFB7700007A1C9E /* NSDateTimeAgo.bundle */; };
 		3262A3711CF5F73200CC9AFA /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3262A3701CF5F73200CC9AFA /* ImageStore.swift */; };
 		3262A3731CF5FA5C00CC9AFA /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3262A3721CF5FA5C00CC9AFA /* ImageService.swift */; };
 		326AD5271CF1E41D00CF15FB /* articles2.json in Resources */ = {isa = PBXBuildFile; fileRef = 326AD5261CF1E41D00CF15FB /* articles2.json */; };
@@ -61,6 +63,8 @@
 		322E1E2B1CF4034E004D071F /* DrudgeStyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrudgeStyleKit.swift; sourceTree = "<group>"; };
 		322E1E301CF488A2004D071F /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		322E1E341CF4F49D004D071F /* logoLaunchIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logoLaunchIcon.png; path = assets/logoLaunchIcon.png; sourceTree = "<group>"; };
+		324C852E1CFB7700007A1C9E /* NSDate+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Extension.swift"; sourceTree = "<group>"; };
+		324C852F1CFB7700007A1C9E /* NSDateTimeAgo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NSDateTimeAgo.bundle; sourceTree = "<group>"; };
 		3262A3701CF5F73200CC9AFA /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		3262A3721CF5FA5C00CC9AFA /* ImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		326AD5261CF1E41D00CF15FB /* articles2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = articles2.json; sourceTree = "<group>"; };
@@ -119,6 +123,8 @@
 		32C6DC841CE9345E00ADF8C9 = {
 			isa = PBXGroup;
 			children = (
+				324C852E1CFB7700007A1C9E /* NSDate+Extension.swift */,
+				324C852F1CFB7700007A1C9E /* NSDateTimeAgo.bundle */,
 				32E69C151CEC893E00067B5E /* Image.swift */,
 				32E69C171CEC893E00067B5E /* Location.swift */,
 				32F97BE31CEB47E00023551D /* Article.swift */,
@@ -299,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32C0333A1CEF8D0A00E4AF46 /* articles.json in Resources */,
+				324C85311CFB7700007A1C9E /* NSDateTimeAgo.bundle in Resources */,
 				326AD5271CF1E41D00CF15FB /* articles2.json in Resources */,
 				32C6DC9B1CE9345E00ADF8C9 /* LaunchScreen.storyboard in Resources */,
 				32C6DC981CE9345E00ADF8C9 /* Assets.xcassets in Resources */,
@@ -333,6 +340,7 @@
 				32E69C1D1CECEF7600067B5E /* UpdateIndicator.swift in Sources */,
 				3262A3731CF5FA5C00CC9AFA /* ImageService.swift in Sources */,
 				3262A3711CF5F73200CC9AFA /* ImageStore.swift in Sources */,
+				324C85301CFB7700007A1C9E /* NSDate+Extension.swift in Sources */,
 				32E69C191CEC893E00067B5E /* Image.swift in Sources */,
 				322E1E2C1CF4034E004D071F /* DrudgeStyleKit.swift in Sources */,
 				32C6DCC11CE95AAE00ADF8C9 /* ArticleTableViewCell.swift in Sources */,

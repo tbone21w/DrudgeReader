@@ -31,13 +31,13 @@ class ArticleTableViewCell: UITableViewCell {
   // MARK: Overrides
   override func awakeFromNib() {
     super.awakeFromNib()
-    articleImage.image = nil
+    articleImage.image = DrudgeStyleKit.imageOfPicture
   }
   
   
   override func prepareForReuse() {
     super.prepareForReuse()
-    articleImage.image = nil
+    articleImage.image = DrudgeStyleKit.imageOfPicture
     
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleImageTap))
     articleImage.userInteractionEnabled = true

@@ -59,6 +59,7 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
     //style UI
     tableView.backgroundColor = UIColor.blackColor()
     
+    title = "Drudgin"
     
     //Hook tableview up to coredata
     fetchRequest = NSFetchRequest(entityName: "Article")
@@ -173,7 +174,7 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
 
     cell.title.text = article.title
     
-    //cell.timeAgoLabel.text = article.updatedAt?
+    cell.timeAgoLabel.text = article.updatedAt?.timeAgoSimple
     
     //pull out the host name
     let url = NSURL(string: article.href!)
@@ -202,7 +203,9 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
               }
           case .Failure(_):
             //no value to indicatea fail to user, could even be TLS version
-            self.configureCellImageHidden(cell)
+            cell.articleImage.image =  DrudgeStyleKit.imageOfPicture
+            self.stopAnimatingCellSpinner(cell)
+            print("")
           }
           
         }
@@ -210,7 +213,8 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
       
     } else {
       //no image
-      configureCellImageHidden(cell)
+      cell.articleImage.image =  DrudgeStyleKit.imageOfPicture
+     self.stopAnimatingCellSpinner(cell)
     }
     
     return cell
