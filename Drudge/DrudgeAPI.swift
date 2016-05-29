@@ -150,7 +150,7 @@ class DrudgeAPI {
                 && imageURL == article?.imageURL
                 && currentLocation == article?.location
                 && createdDate == article?.createdAt
-                && updatedDate == article?.updatedAt
+                //&& updatedDate == article?.updatedAt
                 && href == article?.href
                 && text == article?.title {
         

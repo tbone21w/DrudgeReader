@@ -2,7 +2,7 @@
 //  Article+CoreDataProperties.swift
 //  Drudge
 //
-//  Created by Todd Isaacs on 5/27/16.
+//  Created by Todd Isaacs on 5/28/16.
 //  Copyright © 2016 Todd Isaacs. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -23,7 +23,5 @@ extension Article {
     @NSManaged var read: NSNumber?
     @NSManaged var title: String?
     @NSManaged var updatedAt: NSDate?
-    @NSManaged var images: NSSet?
-    @NSManaged var locations: NSSet?
 
 }

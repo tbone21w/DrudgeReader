@@ -32,6 +32,15 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
     return refreshControl
   }()
   
+  //"2016-05-22T08:17:08.595288-04:00"
+  static let formatterISO8601: NSDateFormatter = {
+    let formatter = NSDateFormatter()
+    formatter.dateStyle = .FullStyle
+    //formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+    //formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSxxx"
+    
+    return formatter
+  }()
   
   @IBOutlet weak var newUpdatesIndicator: UpdateIndicator!
   
@@ -163,7 +172,12 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
     let article = fetchedResultsController.objectAtIndexPath(indexPath) as! Article
 
     cell.title.text = article.title
-    cell.urlSnippet.text = article.href
+    
+    //cell.timeAgoLabel.text = article.updatedAt?
+    
+    //pull out the host name
+    let url = NSURL(string: article.href!)
+    cell.urlSnippet.text = url?.host
 
     if article.imageURL != nil && !article.imageURL!.isEmpty {
 

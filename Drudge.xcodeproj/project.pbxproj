@@ -498,6 +498,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.nerdwaller.Drudge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Debug;
 		};
@@ -512,6 +513,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.nerdwaller.Drudge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};

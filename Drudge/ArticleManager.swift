@@ -50,7 +50,7 @@ class ArticleManager {
     let task = session.dataTaskWithRequest(request, completionHandler: {
       (data, response, error) -> Void in
       
-      var result = self.drudgeAPI.articlesFromJSONData(inContext: self.coreDataStack.context, data: data)
+      var result = self.drudgeAPI.articlesFromJSONData(inContext: self.coreDataStack.privateContext, data: data)
       
       //if we successfully fetched articles
       if case let .Success(articles) = result {
