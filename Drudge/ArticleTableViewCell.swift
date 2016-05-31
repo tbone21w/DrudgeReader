@@ -21,6 +21,25 @@ class ArticleTableViewCell: UITableViewCell {
   
   var delegate: CellGestureDelegate?
   
+  //need to track the article since managed result controller may be different than table view
+  weak var article:Article! {
+    didSet {
+      self.title.text = article.title
+      
+      if article.read == true {
+        title.font = UIFont.systemFontOfSize(14.0)
+      } else {
+        title.font = UIFont.boldSystemFontOfSize(14.0)
+      }
+      
+      let url = NSURL(string: article.href!)
+      self.urlSnippet.text = url?.host
+      
+      self.timeAgoLabel.text = article.updatedAt?.timeAgoSimple
+      
+    }
+  }
+  
   func handleImageTap(recognizer:UIGestureRecognizer) {
     if recognizer.state == .Ended {
         delegate?.tableViewCellSubViewTapped(self)
@@ -31,13 +50,13 @@ class ArticleTableViewCell: UITableViewCell {
   // MARK: Overrides
   override func awakeFromNib() {
     super.awakeFromNib()
-    articleImage.image = DrudgeStyleKit.imageOfPicture
+    articleImage.image = nil
   }
   
   
   override func prepareForReuse() {
     super.prepareForReuse()
-    articleImage.image = DrudgeStyleKit.imageOfPicture
+    articleImage.image = nil
     
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleImageTap))
     articleImage.userInteractionEnabled = true

@@ -172,13 +172,7 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
     
     let article = fetchedResultsController.objectAtIndexPath(indexPath) as! Article
 
-    cell.title.text = article.title
-    
-    cell.timeAgoLabel.text = article.updatedAt?.timeAgoSimple
-    
-    //pull out the host name
-    let url = NSURL(string: article.href!)
-    cell.urlSnippet.text = url?.host
+    cell.article = article
 
     if article.imageURL != nil && !article.imageURL!.isEmpty {
 
@@ -245,8 +239,26 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
       
       var article:Article!
       
+      
       if let indexPath = tableView.indexPathForSelectedRow {
-        article = fetchedResultsController.objectAtIndexPath(indexPath) as! Article
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! ArticleTableViewCell
+        article = cell.article
+        
+        if article.read == false {
+          article.read = true
+          do {
+            //this will trigger an update to the table view force an update (ignore update button)
+            manualRefreshing = true
+            try articleManager.coreDataStack.saveContext()
+          } catch  {
+            //no need to do anyhting
+          }
+          manualRefreshing = false
+          
+        }
+        
+        
+        //article = fetchedResultsController.objectAtIndexPath(indexPath) as! Article
         vc.article = article
       }
     }
@@ -270,6 +282,7 @@ extension ArticleViewController: NSFetchedResultsControllerDelegate {
   func controllerDidChangeContent(controller: NSFetchedResultsController) {
     if tableView.numberOfRowsInSection(0) == 0 || manualRefreshing {
       tableView.reloadData()
+      
     } else {
       showUpdateIndicator()
     }

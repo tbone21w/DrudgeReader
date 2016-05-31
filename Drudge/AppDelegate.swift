@@ -26,6 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var applicationRunningInBackground = false
   
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    //Settings
+    let userDefaults = NSUserDefaults.standardUserDefaults()
+    
+    print("User Defaults \(userDefaults)")
     
     //setup local notifications
     let notificationSettings = UIUserNotificationSettings(forTypes: [.Badge, .Alert], categories: nil)
