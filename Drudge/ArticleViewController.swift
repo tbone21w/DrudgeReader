@@ -9,6 +9,11 @@
 import UIKit
 import CoreData
 
+enum SearchFilterType: String {
+   case ShowAll = "Show All"
+   case ShowUnread = "Show Unread"
+}
+
 class ArticleViewController: UIViewController,UITableViewDataSource, UITableViewDelegate, CellGestureDelegate {
 
   var articles:[Article]! = []
@@ -23,7 +28,8 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
   var fetchedResultsController: NSFetchedResultsController!
   
   var updateIndicator:UpdateIndicator = UpdateIndicator()
-  var manualRefreshing = false
+  var immediateTableUpdate = false
+  
   
   lazy var refreshControl: UIRefreshControl = {
     let refreshControl = UIRefreshControl()
@@ -42,6 +48,39 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
     return formatter
   }()
   
+  @IBOutlet weak var filterButton: UIBarButtonItem!
+  
+  @IBAction func handleFilterClick(sender: AnyObject?) {
+    
+    fetchRequest = NSFetchRequest(entityName: "Article")
+    
+    if filterButton.title == SearchFilterType.ShowUnread.rawValue {
+      filterButton.title = SearchFilterType.ShowAll.rawValue
+      fetchRequest.predicate = NSPredicate(format: "read = false")
+    } else {
+      filterButton.title = SearchFilterType.ShowUnread.rawValue
+    }
+    
+    let sortDescriptor = NSSortDescriptor(key: "updatedAt", ascending: false)
+    fetchRequest.sortDescriptors = [sortDescriptor]
+    
+    fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
+                                                          managedObjectContext: coreDataStack.context,
+                                                          sectionNameKeyPath: nil,
+                                                          cacheName: nil)
+    
+    fetchedResultsController.delegate = self
+    
+    do {
+      try fetchedResultsController.performFetch()
+      tableView.reloadData()
+    } catch let error as NSError {
+      print("Error: \(error.localizedDescription)")
+    }
+
+  }
+  
+  
   @IBOutlet weak var newUpdatesIndicator: UpdateIndicator!
   
   @IBOutlet weak var tableView: UITableView!
@@ -55,29 +94,15 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
     //setup tableview
     tableView.dataSource = self
     
+    filterButton.title = SearchFilterType.ShowAll.rawValue
     
     //style UI
     tableView.backgroundColor = UIColor.blackColor()
     
     title = "Drudgin"
     
-    //Hook tableview up to coredata
-    fetchRequest = NSFetchRequest(entityName: "Article")
-    let sortDescriptor = NSSortDescriptor(key: "updatedAt", ascending: false)
-    fetchRequest.sortDescriptors = [sortDescriptor]
-    
-    fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
-                                                          managedObjectContext: coreDataStack.context,
-                                                          sectionNameKeyPath: nil,
-                                                          cacheName: nil)
-    
-    fetchedResultsController.delegate = self
-    
-    do {
-      try fetchedResultsController.performFetch()
-    } catch let error as NSError {
-      print("Error: \(error.localizedDescription)")
-    }
+    //setup fetchedResutlsController and get data
+    handleFilterClick(nil)
 
     //Setup new article indicator
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleGetUpdate))
@@ -90,21 +115,17 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
     
   }
   
+  /**
+   * Handle the manual pull to refresh.  We set a flag indicating we want immediate table update
+   */
   func handleRefresh(refreshControl: UIRefreshControl) {
     
     if let maxDate = coreDataStack.getMostRecentArticleDate() {
-      manualRefreshing = true
+      immediateTableUpdate = true
       articleManager.fetchArticleSinceDate(maxDate, completion: {
         (drudgeAPIResult) -> Void in
-        
-        switch drudgeAPIResult {
-        case let .Success(articles):
-          print("Pull to refresh loaded: \(articles.count)")
-        case let .Failure(error):
-          print("Failed to load Articles \(error)")
-        }
     
-        self.manualRefreshing = false
+        self.immediateTableUpdate = false
         self.refreshControl.endRefreshing()
         
       })
@@ -112,6 +133,9 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
   }
   
   
+  /**
+   * Show new articles
+   */
   func handleGetUpdate(sender:UIGestureRecognizer) {
     
     coreDataStack.resetNewArticles()
@@ -197,9 +221,9 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
               }
           case .Failure(_):
             //no value to indicatea fail to user, could even be TLS version
-            cell.articleImage.image =  DrudgeStyleKit.imageOfPicture
+            //cell.articleImage.image =  DrudgeStyleKit.imageOfPicture
+            self.configureCellImageHidden(cell)
             self.stopAnimatingCellSpinner(cell)
-            print("")
           }
           
         }
@@ -207,7 +231,8 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
       
     } else {
       //no image
-      cell.articleImage.image =  DrudgeStyleKit.imageOfPicture
+      //cell.articleImage.image =  DrudgeStyleKit.imageOfPicture
+      configureCellImageHidden(cell)
      self.stopAnimatingCellSpinner(cell)
     }
     
@@ -248,17 +273,15 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
           article.read = true
           do {
             //this will trigger an update to the table view force an update (ignore update button)
-            manualRefreshing = true
+            immediateTableUpdate = true
             try articleManager.coreDataStack.saveContext()
           } catch  {
             //no need to do anyhting
           }
-          manualRefreshing = false
+          immediateTableUpdate = false
           
         }
         
-        
-        //article = fetchedResultsController.objectAtIndexPath(indexPath) as! Article
         vc.article = article
       }
     }
@@ -280,7 +303,7 @@ extension ArticleViewController: NSFetchedResultsControllerDelegate {
   //when tapped we will load in the new records.
   
   func controllerDidChangeContent(controller: NSFetchedResultsController) {
-    if tableView.numberOfRowsInSection(0) == 0 || manualRefreshing {
+    if tableView.numberOfRowsInSection(0) == 0 || immediateTableUpdate {
       tableView.reloadData()
       
     } else {

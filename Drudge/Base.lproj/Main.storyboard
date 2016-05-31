@@ -18,6 +18,14 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCk-2p-VJZ" userLabel="NewUpdatesIndicator" customClass="UpdateIndicator" customModule="Drudge" customModuleProvider="target">
+                                <rect key="frame" x="254" y="5" width="93" height="27"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="93" id="DQK-4Q-red"/>
+                                    <constraint firstAttribute="height" constant="27" id="nD8-8z-hJS"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="68" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MVR-Vn-IPv">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -95,14 +103,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCk-2p-VJZ" userLabel="NewUpdatesIndicator" customClass="UpdateIndicator" customModule="Drudge" customModuleProvider="target">
-                                <rect key="frame" x="254" y="5" width="93" height="27"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="93" id="DQK-4Q-red"/>
-                                    <constraint firstAttribute="height" constant="27" id="nD8-8z-hJS"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -115,8 +115,15 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" id="VX1-xL-fxp"/>
+                    <navigationItem key="navigationItem" id="VX1-xL-fxp">
+                        <barButtonItem key="rightBarButtonItem" title="Show Unread" id="44q-Qj-aPG">
+                            <connections>
+                                <action selector="handleFilterClick:" destination="btP-Nd-MbL" id="kq6-MN-5e5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="filterButton" destination="44q-Qj-aPG" id="881-RU-TE1"/>
                         <outlet property="newUpdatesIndicator" destination="LCk-2p-VJZ" id="5Iw-qT-Iny"/>
                         <outlet property="tableView" destination="MVR-Vn-IPv" id="VZ4-Dc-ghs"/>
                         <segue destination="yPl-iO-0IO" kind="show" identifier="showImage" id="ALo-Nh-Hfu"/>
