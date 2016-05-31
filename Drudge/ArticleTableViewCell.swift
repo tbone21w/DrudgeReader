@@ -28,15 +28,19 @@ class ArticleTableViewCell: UITableViewCell {
       
       if article.read == true {
         title.font = UIFont.systemFontOfSize(14.0)
+        title.textColor = DrudgeStyleKit.readArticle
       } else {
-        title.font = UIFont.boldSystemFontOfSize(14.0)
+        
+        title.font = UIFont.boldSystemFontOfSize(16.0)
+        title.textColor = DrudgeStyleKit.unreadArticle
       }
       
       let url = NSURL(string: article.href!)
-      self.urlSnippet.text = url?.host
+      urlSnippet.text = url?.host
+      urlSnippet.textColor = DrudgeStyleKit.unreadArticle
       
-      self.timeAgoLabel.text = article.updatedAt?.timeAgoSimple
-      
+      timeAgoLabel.text = article.updatedAt?.timeAgoSimple
+      timeAgoLabel.textColor = DrudgeStyleKit.unreadArticle
     }
   }
   
