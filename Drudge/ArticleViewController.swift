@@ -30,6 +30,11 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
   var updateIndicator:UpdateIndicator = UpdateIndicator()
   var immediateTableUpdate = false
   
+  var showPlaceholder = false
+  
+  var showAll = true
+  
+  var settingsObserver:AnyObject?
   
   lazy var refreshControl: UIRefreshControl = {
     let refreshControl = UIRefreshControl()
@@ -39,26 +44,82 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
   }()
   
   //"2016-05-22T08:17:08.595288-04:00"
-  static let formatterISO8601: NSDateFormatter = {
-    let formatter = NSDateFormatter()
-    formatter.dateStyle = .FullStyle
-    //formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-    //formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSxxx"
-    
-    return formatter
-  }()
-  
+//  static let formatterISO8601: NSDateFormatter = {
+//    let formatter = NSDateFormatter()
+//    formatter.dateStyle = .FullStyle
+//    
+//    return formatter
+//  }()
+//  
   @IBOutlet weak var filterButton: UIBarButtonItem!
   
   @IBAction func handleFilterClick(sender: AnyObject?) {
+      showAll = !showAll
+      loadArticles()
+  }
+  
+  
+  @IBOutlet weak var newUpdatesIndicator: UpdateIndicator!
+  
+  @IBOutlet weak var tableView: UITableView!
+
+
+   override func viewDidLoad() {
+    super.viewDidLoad()
+
+    //Handle settings
+    getSettings()
+
+    settingsObserver = NSNotificationCenter.defaultCenter().addObserverForName(NSUserDefaultsDidChangeNotification, object: nil, queue: NSOperationQueue.mainQueue(), usingBlock: { (notificaiton) in
+      self.settingsChangedHandler()
+    })
     
+    
+
+    tableView.scrollIndicatorInsets = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0);
+    
+    //setup tableview
+    tableView.dataSource = self
+    
+    
+    //style UI
+    tableView.backgroundColor = UIColor.blackColor()
+    
+    title = "Drudgin"
+    //self.navigationController?.navigationBar.barTintColor = DrudgeStyleKit.logoLines
+    
+    //setup fetchedResutlsController and get data
+    showAll = true
+    filterButton.image = DrudgeStyleKit.imageOfFilter
+    
+    //load initial data
+    loadArticles()
+
+    //Setup new article indicator
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleGetUpdate))
+    newUpdatesIndicator.addGestureRecognizer(tapGesture)
+    newUpdatesIndicator.hidden = true
+    newUpdatesIndicator.alpha = 0
+
+    //setup pull to refresh
+    tableView.addSubview(refreshControl)
+    
+    navigationItem.titleView = UIImageView(image:  DrudgeStyleKit.imageOfMiniLogo2)
+    
+  }
+  
+  
+  /**
+   * Load articles based on filter settings
+   */
+  func loadArticles() {
     fetchRequest = NSFetchRequest(entityName: "Article")
     
-    if filterButton.title == SearchFilterType.ShowUnread.rawValue {
-      filterButton.title = SearchFilterType.ShowAll.rawValue
-      fetchRequest.predicate = NSPredicate(format: "read = false")
+    if showAll {
+      filterButton.image = DrudgeStyleKit.imageOfFilter
     } else {
-      filterButton.title = SearchFilterType.ShowUnread.rawValue
+      fetchRequest.predicate = NSPredicate(format: "read = false")
+      filterButton.image = DrudgeStyleKit.imageOfNoFilter
     }
     
     let sortDescriptor = NSSortDescriptor(key: "updatedAt", ascending: false)
@@ -77,43 +138,24 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
     } catch let error as NSError {
       print("Error: \(error.localizedDescription)")
     }
-
   }
   
   
-  @IBOutlet weak var newUpdatesIndicator: UpdateIndicator!
-  
-  @IBOutlet weak var tableView: UITableView!
-
-
-   override func viewDidLoad() {
-    super.viewDidLoad()
-
-    tableView.scrollIndicatorInsets = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0);
-    
-    //setup tableview
-    tableView.dataSource = self
-    
-    filterButton.title = SearchFilterType.ShowAll.rawValue
-    
-    //style UI
-    tableView.backgroundColor = UIColor.blackColor()
-    
-    title = "Drudgin"
-    
-    //setup fetchedResutlsController and get data
-    handleFilterClick(nil)
-
-    //Setup new article indicator
-    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleGetUpdate))
-    newUpdatesIndicator.addGestureRecognizer(tapGesture)
-    newUpdatesIndicator.hidden = true
-    newUpdatesIndicator.alpha = 0
-
-    //setup pull to refresh
-    tableView.addSubview(refreshControl)
-    
+  /**
+   * Event handler for the settings observer.  
+   *
+   * When settings changed grab the current settings and reload the table view
+   */
+  func settingsChangedHandler() {
+    getSettings()
+    tableView.reloadData()
   }
+  
+  
+  func getSettings() {
+    showPlaceholder = NSUserDefaults.standardUserDefaults().boolForKey("show_placeholder")
+  }
+  
   
   /**
    * Handle the manual pull to refresh.  We set a flag indicating we want immediate table update
@@ -221,7 +263,6 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
               }
           case .Failure(_):
             //no value to indicatea fail to user, could even be TLS version
-            //cell.articleImage.image =  DrudgeStyleKit.imageOfPicture
             self.configureCellImageHidden(cell)
             self.stopAnimatingCellSpinner(cell)
           }
@@ -231,7 +272,6 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
       
     } else {
       //no image
-      //cell.articleImage.image =  DrudgeStyleKit.imageOfPicture
       configureCellImageHidden(cell)
      self.stopAnimatingCellSpinner(cell)
     }
@@ -245,10 +285,19 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
     cell.articleImageWidthConstraint.constant = cell.articleImage.frame.height
     cell.spinner.startAnimating()
     cell.spinner.hidden = false
+    
+    cell.articleImage.alpha = 1.0
   }
   
   func configureCellImageHidden(cell: ArticleTableViewCell) {
-    cell.articleImageWidthConstraint.constant = 0
+    if showPlaceholder {
+      cell.articleImage.image =  DrudgeStyleKit.imageOfPicture
+      cell.articleImage.alpha = 0.5
+      cell.articleImageWidthConstraint.constant = cell.articleImage.frame.height
+    } else {
+      cell.articleImageWidthConstraint.constant = 0
+    }
+    
     stopAnimatingCellSpinner(cell)
   }
   
@@ -257,6 +306,15 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
     cell.spinner.hidden = true
   }
 
+  override func viewWillDisappear(animated: Bool) {
+    print("ArticleViewController viewWillDisappear")
+    if let observer = settingsObserver {
+      print("Removing settings observer")
+      NSNotificationCenter.defaultCenter().removeObserver(observer)
+    }
+  }
+
+  
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     
     if segue.identifier == "showArticleDetail" {

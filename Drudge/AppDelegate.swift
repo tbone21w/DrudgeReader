@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var articleManager:ArticleManager!
   var drudgeAPI:DrudgeAPI!
   
+  var articleRetentionDays = 30
   
   var timer:NSTimer?
   
@@ -27,10 +28,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     //Settings
-    let userDefaults = NSUserDefaults.standardUserDefaults()
+    articleRetentionDays = NSUserDefaults.standardUserDefaults().integerForKey("article_retention")
     
-    print("User Defaults \(userDefaults)")
-    
+    print("******* Retention Days \(articleRetentionDays)")
     //setup local notifications
     let notificationSettings = UIUserNotificationSettings(forTypes: [.Badge, .Alert], categories: nil)
     UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
@@ -55,25 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //delete older data
     removeArticleImages()
     
-    let articleCount = coreDataStack.getArticleCount()
-    
-    if  articleCount > 0 {
-      //get updates
-      print("Fetching Articles SINCE")
-      if let maxDate = coreDataStack.getMostRecentArticleDate() {
-        articleManager.fetchArticleSinceDate(maxDate, completion: {
-            (drudgeAPIResult) -> Void in
-                self.handleDrudgeAPIResult(drudgeAPIResult)
-        })
-      }
-    } else {
-      //get latest data
-      print("Fetching ALL Articles")
-      articleManager.fetchRecentArticles({
-          (drudgeAPIResult) -> Void in
-              self.handleDrudgeAPIResult(drudgeAPIResult)
-      })
-    }
+    getArticles()
     
     let url = DrudgeAPI.latestArticles()
     print("Latest Articles URL \(url.absoluteString)")
@@ -86,9 +68,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       .sharedApplication()
       .setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
     
+    //global style
+    self.window?.tintColor = DrudgeStyleKit.logoStroke
+   UINavigationBar
+    .appearance()
+    .titleTextAttributes = [NSForegroundColorAttributeName : DrudgeStyleKit.logoStroke]
+    
+   // UINavigationBar.appearance().barTintColor = DrudgeStyleKit.logoLines
     return true
   }
   
+  func getArticles() {
+    let articleCount = coreDataStack.getArticleCount()
+    
+    if  articleCount > 0 {
+      //get updates
+      print("Fetching Articles SINCE")
+      if let maxDate = coreDataStack.getMostRecentArticleDate() {
+        articleManager.fetchArticleSinceDate(maxDate, completion: {
+          (drudgeAPIResult) -> Void in
+          self.handleDrudgeAPIResult(drudgeAPIResult)
+        })
+      }
+    } else {
+      //get latest data
+      print("Fetching ALL Articles")
+      articleManager.fetchRecentArticles({
+        (drudgeAPIResult) -> Void in
+        self.handleDrudgeAPIResult(drudgeAPIResult)
+      })
+    }
+  }
   
   func removeArticleImages() {
     let articlesToDelete = coreDataStack.getArticlesToDelete()
@@ -128,6 +138,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func applicationWillEnterForeground(application: UIApplication) {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     UIApplication.sharedApplication().applicationIconBadgeNumber = 0
+    
+    getArticles()
+    
     applicationRunningInBackground = false
     
     setupActiveModeBackgroundProcessing()

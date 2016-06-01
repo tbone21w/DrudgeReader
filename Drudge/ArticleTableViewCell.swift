@@ -19,7 +19,7 @@ class ArticleTableViewCell: UITableViewCell {
   @IBOutlet weak var timeAgoLabel: UILabel!
   @IBOutlet weak var articleImageWidthConstraint: NSLayoutConstraint!
   
-  var delegate: CellGestureDelegate?
+  weak var delegate: CellGestureDelegate?
   
   //need to track the article since managed result controller may be different than table view
   weak var article:Article! {
@@ -65,10 +65,10 @@ class ArticleTableViewCell: UITableViewCell {
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleImageTap))
     articleImage.userInteractionEnabled = true
     articleImage.addGestureRecognizer((tapGesture))
-
   }
+  
 }
 
-protocol CellGestureDelegate {
+protocol CellGestureDelegate: class {
   func tableViewCellSubViewTapped(cell:UITableViewCell)
 }

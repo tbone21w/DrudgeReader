@@ -15,10 +15,10 @@
 		322E1E351CF4F49D004D071F /* logoLaunchIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 322E1E341CF4F49D004D071F /* logoLaunchIcon.png */; };
 		324C85301CFB7700007A1C9E /* NSDate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324C852E1CFB7700007A1C9E /* NSDate+Extension.swift */; };
 		324C85311CFB7700007A1C9E /* NSDateTimeAgo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 324C852F1CFB7700007A1C9E /* NSDateTimeAgo.bundle */; };
-		324C85331CFC73CB007A1C9E /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 324C85321CFC73CB007A1C9E /* Settings.bundle */; };
 		3262A3711CF5F73200CC9AFA /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3262A3701CF5F73200CC9AFA /* ImageStore.swift */; };
 		3262A3731CF5FA5C00CC9AFA /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3262A3721CF5FA5C00CC9AFA /* ImageService.swift */; };
 		326AD5271CF1E41D00CF15FB /* articles2.json in Resources */ = {isa = PBXBuildFile; fileRef = 326AD5261CF1E41D00CF15FB /* articles2.json */; };
+		329695A11CFE2B11007EC869 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 329695A01CFE2B11007EC869 /* Settings.bundle */; };
 		32C0333A1CEF8D0A00E4AF46 /* articles.json in Resources */ = {isa = PBXBuildFile; fileRef = 32C033391CEF8D0A00E4AF46 /* articles.json */; };
 		32C6DC911CE9345E00ADF8C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C6DC901CE9345E00ADF8C9 /* AppDelegate.swift */; };
 		32C6DC961CE9345E00ADF8C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32C6DC941CE9345E00ADF8C9 /* Main.storyboard */; };
@@ -66,10 +66,10 @@
 		322E1E341CF4F49D004D071F /* logoLaunchIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logoLaunchIcon.png; path = assets/logoLaunchIcon.png; sourceTree = "<group>"; };
 		324C852E1CFB7700007A1C9E /* NSDate+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Extension.swift"; sourceTree = "<group>"; };
 		324C852F1CFB7700007A1C9E /* NSDateTimeAgo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NSDateTimeAgo.bundle; sourceTree = "<group>"; };
-		324C85321CFC73CB007A1C9E /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		3262A3701CF5F73200CC9AFA /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		3262A3721CF5FA5C00CC9AFA /* ImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		326AD5261CF1E41D00CF15FB /* articles2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = articles2.json; sourceTree = "<group>"; };
+		329695A01CFE2B11007EC869 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		32C033391CEF8D0A00E4AF46 /* articles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = articles.json; sourceTree = "<group>"; };
 		32C6DC8D1CE9345E00ADF8C9 /* Drudge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drudge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32C6DC901CE9345E00ADF8C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +125,7 @@
 		32C6DC841CE9345E00ADF8C9 = {
 			isa = PBXGroup;
 			children = (
+				329695A01CFE2B11007EC869 /* Settings.bundle */,
 				324C852E1CFB7700007A1C9E /* NSDate+Extension.swift */,
 				324C852F1CFB7700007A1C9E /* NSDateTimeAgo.bundle */,
 				32E69C151CEC893E00067B5E /* Image.swift */,
@@ -174,7 +175,6 @@
 				3262A3701CF5F73200CC9AFA /* ImageStore.swift */,
 				3262A3721CF5FA5C00CC9AFA /* ImageService.swift */,
 				32D57FB21CF6ABAA009D7284 /* ImageViewController.swift */,
-				324C85321CFC73CB007A1C9E /* Settings.bundle */,
 			);
 			path = Drudge;
 			sourceTree = "<group>";
@@ -314,7 +314,7 @@
 				32C6DC981CE9345E00ADF8C9 /* Assets.xcassets in Resources */,
 				32C6DC961CE9345E00ADF8C9 /* Main.storyboard in Resources */,
 				322E1E311CF488A2004D071F /* assets in Resources */,
-				324C85331CFC73CB007A1C9E /* Settings.bundle in Resources */,
+				329695A11CFE2B11007EC869 /* Settings.bundle in Resources */,
 				322E1E351CF4F49D004D071F /* logoLaunchIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
