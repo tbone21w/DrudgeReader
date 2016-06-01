@@ -116,7 +116,7 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="VX1-xL-fxp">
-                        <barButtonItem key="rightBarButtonItem" image="Icon-24.png" id="44q-Qj-aPG">
+                        <barButtonItem key="rightBarButtonItem" id="44q-Qj-aPG">
                             <connections>
                                 <action selector="handleFilterClick:" destination="btP-Nd-MbL" id="kq6-MN-5e5"/>
                             </connections>
@@ -218,7 +218,4 @@
             <point key="canvasLocation" x="2717" y="387"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Icon-24.png" width="24" height="24"/>
-    </resources>
 </document>
