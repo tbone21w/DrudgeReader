@@ -11,6 +11,7 @@ import UIKit
 class ArticleTableViewCell: UITableViewCell {
   
   
+  @IBOutlet weak var articleTypeIcon: UIImageView!
   @IBOutlet weak var title: UILabel!
   @IBOutlet weak var urlSnippet: UILabel!
   @IBOutlet weak var articleImage: UIImageView!
@@ -41,6 +42,15 @@ class ArticleTableViewCell: UITableViewCell {
       
       timeAgoLabel.text = article.updatedAt?.timeAgoSimple
       timeAgoLabel.textColor = DrudgeStyleKit.unreadArticle
+
+      if article.location == "TOP_STORY" {
+        articleTypeIcon.image =  DrudgeStyleKit.imageOfTop_story
+      } else  if article.location == "MAIN_HEADLINE" {
+        articleTypeIcon.image =  DrudgeStyleKit.imageOfHeadline_icon
+      } else {
+        articleTypeIcon.image =  DrudgeStyleKit.imageOfColumn
+      }
+      
     }
   }
   
