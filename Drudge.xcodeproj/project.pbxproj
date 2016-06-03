@@ -10,6 +10,7 @@
 		322739A11CF8AD3D00820A35 /* Image+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3227399E1CF8AD3D00820A35 /* Image+CoreDataProperties.swift */; };
 		322739A21CF8AD3D00820A35 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3227399F1CF8AD3D00820A35 /* Location+CoreDataProperties.swift */; };
 		322739A31CF8AD3D00820A35 /* Article+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322739A01CF8AD3D00820A35 /* Article+CoreDataProperties.swift */; };
+		322746FC1CFF8E5100577DB9 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322746FB1CFF8E5100577DB9 /* FilterViewController.swift */; };
 		322E1E2C1CF4034E004D071F /* DrudgeStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322E1E2B1CF4034E004D071F /* DrudgeStyleKit.swift */; };
 		322E1E311CF488A2004D071F /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 322E1E301CF488A2004D071F /* assets */; };
 		322E1E351CF4F49D004D071F /* logoLaunchIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 322E1E341CF4F49D004D071F /* logoLaunchIcon.png */; };
@@ -61,6 +62,7 @@
 		3227399E1CF8AD3D00820A35 /* Image+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3227399F1CF8AD3D00820A35 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		322739A01CF8AD3D00820A35 /* Article+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Article+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		322746FB1CFF8E5100577DB9 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		322E1E2B1CF4034E004D071F /* DrudgeStyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrudgeStyleKit.swift; sourceTree = "<group>"; };
 		322E1E301CF488A2004D071F /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		322E1E341CF4F49D004D071F /* logoLaunchIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logoLaunchIcon.png; path = assets/logoLaunchIcon.png; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				3262A3701CF5F73200CC9AFA /* ImageStore.swift */,
 				3262A3721CF5FA5C00CC9AFA /* ImageService.swift */,
 				32D57FB21CF6ABAA009D7284 /* ImageViewController.swift */,
+				322746FB1CFF8E5100577DB9 /* FilterViewController.swift */,
 			);
 			path = Drudge;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				322746FC1CFF8E5100577DB9 /* FilterViewController.swift in Sources */,
 				32F97BDE1CEB34A60023551D /* CoreDataStack.swift in Sources */,
 				32E69C1D1CECEF7600067B5E /* UpdateIndicator.swift in Sources */,
 				3262A3731CF5FA5C00CC9AFA /* ImageService.swift in Sources */,
