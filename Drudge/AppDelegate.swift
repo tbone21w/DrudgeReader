@@ -141,6 +141,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     getArticles()
     
+    removeArticleImages()
+    
     applicationRunningInBackground = false
     
     setupActiveModeBackgroundProcessing()

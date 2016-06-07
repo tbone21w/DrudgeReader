@@ -50,6 +50,12 @@ class ArticleManager {
     let task = session.dataTaskWithRequest(request, completionHandler: {
       (data, response, error) -> Void in
       
+      //error at this point indicate network issues
+      if error != nil {
+        return completion(DrudgeAPIResult.Failure(DrudgeAPIError.NetworkError))
+      }
+      
+      //vheck for data first
       var result = self.drudgeAPI.articlesFromJSONData(inContext: self.coreDataStack.privateContext, data: data)
       
       //if we successfully fetched articles

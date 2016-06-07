@@ -31,5 +31,8 @@ class FilterViewController: UITableViewController {
   @IBOutlet weak var sortCreatedOldestCell: UITableViewCell!
   
   
-  
+  lazy var cheapVenuePredicate: NSPredicate = {
+    var predicate = NSPredicate(format: "priceInfo.priceCategory == %@", "$")
+    return predicate
+  }()
 }

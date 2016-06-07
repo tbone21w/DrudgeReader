@@ -407,16 +407,59 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                             </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="jRH-pR-oCf">
+                                <rect key="frame" x="275" y="275" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="GNR-Bp-3W1"/>
+                                    <constraint firstAttribute="width" constant="50" id="lny-j8-Ktj"/>
+                                </constraints>
+                            </activityIndicatorView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PbS-SU-yu5">
+                                <rect key="frame" x="20" y="64" width="560" height="536"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qGJ-3t-Jof">
+                                        <rect key="frame" x="203" y="148" width="154" height="61"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Could not load page" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bsN-fZ-1HG">
+                                                <rect key="frame" x="0.0" y="0.0" width="154" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1SB-jc-ce2">
+                                                <rect key="frame" x="0.0" y="31" width="154" height="30"/>
+                                                <state key="normal" title="Try Again"/>
+                                                <connections>
+                                                    <action selector="reloadPage:" destination="Y1o-Q1-GOV" eventType="touchUpInside" id="5Bi-1R-fpq"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="qGJ-3t-Jof" firstAttribute="centerY" secondItem="PbS-SU-yu5" secondAttribute="centerY" id="MaT-W0-q6d"/>
+                                    <constraint firstItem="qGJ-3t-Jof" firstAttribute="centerX" secondItem="PbS-SU-yu5" secondAttribute="centerX" id="g7t-Fx-vhK"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="PbS-SU-yu5" firstAttribute="leading" secondItem="qbF-ab-cR3" secondAttribute="leadingMargin" id="48M-pP-vlb"/>
+                            <constraint firstItem="jRH-pR-oCf" firstAttribute="centerY" secondItem="ls0-Kw-Uof" secondAttribute="centerY" id="Ad5-26-uZ1"/>
                             <constraint firstItem="ls0-Kw-Uof" firstAttribute="leading" secondItem="qbF-ab-cR3" secondAttribute="leading" id="OAb-mK-zhT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="PbS-SU-yu5" secondAttribute="trailing" id="PmF-Zt-yeb"/>
                             <constraint firstAttribute="bottom" secondItem="ls0-Kw-Uof" secondAttribute="bottom" id="QAw-9R-ud7"/>
                             <constraint firstItem="ls0-Kw-Uof" firstAttribute="top" secondItem="qbF-ab-cR3" secondAttribute="top" id="b1l-6n-jDy"/>
                             <constraint firstAttribute="trailing" secondItem="ls0-Kw-Uof" secondAttribute="trailing" id="gWO-nQ-OeA"/>
+                            <constraint firstItem="jRH-pR-oCf" firstAttribute="centerX" secondItem="ls0-Kw-Uof" secondAttribute="centerX" id="o68-lZ-nHU"/>
+                            <constraint firstItem="a0i-Vg-1SZ" firstAttribute="top" secondItem="PbS-SU-yu5" secondAttribute="bottom" id="qhF-XE-2q9"/>
+                            <constraint firstItem="PbS-SU-yu5" firstAttribute="top" secondItem="Fdv-89-6yr" secondAttribute="bottom" id="rLh-Df-CiO"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="jRH-pR-oCf" id="DDP-yF-enb"/>
+                        <outlet property="noResultsView" destination="PbS-SU-yu5" id="ayL-48-wuT"/>
                         <outlet property="webView" destination="ls0-Kw-Uof" id="BMn-Fa-YXr"/>
                     </connections>
                 </viewController>

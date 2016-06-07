@@ -29,6 +29,7 @@ enum DrudgeAPIError: ErrorType {
   case InvalidJSONData
   case NilData
   case DuplicateObject
+  case NetworkError
 }
 
 /**

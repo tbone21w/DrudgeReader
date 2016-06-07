@@ -225,12 +225,15 @@ class CoreDataStack {
   
   
   func getDeleteFetchRequest() -> NSFetchRequest {
+    let articleRetention = NSUserDefaults.standardUserDefaults().integerForKey("article_retention")
+    print("Article Retnetion \(articleRetention)")
+    
     let fetchRequest = NSFetchRequest(entityName: "Article")
     
     let today = NSDate()
     let cutOffDate = NSCalendar.currentCalendar().dateByAddingUnit(
       .Day,
-      value: -30,
+      value: -articleRetention,
       toDate: today,
       options: NSCalendarOptions(rawValue: 0))
     
