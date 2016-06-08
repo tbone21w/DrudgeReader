@@ -369,14 +369,14 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Filters" id="mev-f8-If6">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="YSG-Nf-EaT">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="YSG-Nf-EaT">
                             <connections>
-                                <action selector="cancel:" destination="f11-EH-vht" id="kKA-Y3-198"/>
+                                <action selector="ApplyFilter:" destination="f11-EH-vht" id="Krg-6H-o9x"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Apply" id="eCb-7I-gQ6">
+                        <barButtonItem key="rightBarButtonItem" title="Reset" id="eCb-7I-gQ6">
                             <connections>
-                                <action selector="ApplyFilter:" destination="f11-EH-vht" id="0uf-5Q-Axw"/>
+                                <action selector="resetFilters:" destination="f11-EH-vht" id="Tf5-iT-tBn"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

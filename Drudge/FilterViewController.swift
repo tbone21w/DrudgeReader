@@ -35,6 +35,13 @@ class FilterViewController: UITableViewController {
     dismissViewControllerAnimated(true, completion:nil)
   }
   
+  @IBAction func resetFilters(sender: AnyObject) {
+    selectedSort = updatedAtNewest
+    selectedPredicate = allPredicate
+  
+    setCheckmarks()
+  }
+  
   @IBAction func ApplyFilter(sender: AnyObject) {
     delegate!.filterViewController(self,
                                    didSelectPredicate: selectedPredicate,
@@ -50,7 +57,7 @@ class FilterViewController: UITableViewController {
   var selectedSort:NSSortDescriptor?
   
   //PREDICATES
-  var allPredicate = NSPredicate(format: "1 = 1")
+  var allPredicate = NSPredicate(format: "'1' = '1'")
   var unreadPredicate = NSPredicate(format: "read == false")
   var readPredicate = NSPredicate(format: "read == true")
   

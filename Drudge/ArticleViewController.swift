@@ -46,14 +46,7 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
     return refreshControl
   }()
   
-  //"2016-05-22T08:17:08.595288-04:00"
-//  static let formatterISO8601: NSDateFormatter = {
-//    let formatter = NSDateFormatter()
-//    formatter.dateStyle = .FullStyle
-//    
-//    return formatter
-//  }()
-//  
+ 
   @IBOutlet weak var filterButton: UIBarButtonItem!
   
   @IBAction func handleFilterClick(sender: AnyObject?) {
@@ -94,7 +87,7 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
     
     //setup fetchedResutlsController and get data
     showAll = true
-    filterButton.image = DrudgeStyleKit.imageOfFilter
+    
     
     //load initial data
     loadArticles()
@@ -110,6 +103,27 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
     
     navigationItem.titleView = UIImageView(image:  DrudgeStyleKit.imageOfMiniLogo2)
     
+    setFilterIcon()
+    
+  }
+  
+  func setFilterIcon() {
+    guard
+      let search = searchPredicate,
+          sort = sortDescriptor
+      else {
+        filterButton.image = DrudgeStyleKit.imageOfFilter
+        return
+    }
+    
+    let allPredicate = NSPredicate(format: "'1' = '1'")
+    print("\(search.predicateFormat)  \(sort.key )  \(sort.ascending)")
+    //
+    if search.predicateFormat == allPredicate.predicateFormat && sort.key! == "updatedAt" && !sort.ascending {
+      filterButton.image = DrudgeStyleKit.imageOfFilter
+    } else {
+      filterButton.image = DrudgeStyleKit.imageOfNoFilter
+    }
   }
   
   
@@ -130,9 +144,6 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
       let sort = NSSortDescriptor(key: "updatedAt", ascending: false)
       fetchRequest.sortDescriptors = [sort]
     }
-    
-//    let sort = NSSortDescriptor(key: "updatedAt", ascending: false)
-//    fetchRequest.sortDescriptors = [sort]
 
   
     fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
@@ -402,5 +413,7 @@ extension ArticleViewController: FilterViewControllerDelegate {
     self.sortDescriptor = sortDescriptor
     
     loadArticles()
+    
+    setFilterIcon()
   }
 }
