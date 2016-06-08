@@ -36,7 +36,7 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
   
   var settingsObserver:AnyObject?
   
-  var searchPredicate:NSPredicate? = NSPredicate(format: "1 = 1")
+  var searchPredicate:NSPredicate? = NSPredicate(format: "'1' = '1'")
   var sortDescriptor:NSSortDescriptor? = NSSortDescriptor(key: "updatedAt", ascending: false)
   
   lazy var refreshControl: UIRefreshControl = {
@@ -130,6 +130,9 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
       let sort = NSSortDescriptor(key: "updatedAt", ascending: false)
       fetchRequest.sortDescriptors = [sort]
     }
+    
+//    let sort = NSSortDescriptor(key: "updatedAt", ascending: false)
+//    fetchRequest.sortDescriptors = [sort]
 
   
     fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,

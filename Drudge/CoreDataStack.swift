@@ -225,15 +225,17 @@ class CoreDataStack {
   
   
   func getDeleteFetchRequest() -> NSFetchRequest {
-    let articleRetention = NSUserDefaults.standardUserDefaults().integerForKey("article_retention")
-    print("Article Retnetion \(articleRetention)")
-    
+    //TODO figure out how to grab a multi-value
+//    let articleRetention = NSUserDefaults.standardUserDefaults().integerForKey("article_retention")
+//    print("Article Retnetion \(articleRetention)")
+//    
     let fetchRequest = NSFetchRequest(entityName: "Article")
+//    let retetionDays = articleRetention * -1
     
     let today = NSDate()
     let cutOffDate = NSCalendar.currentCalendar().dateByAddingUnit(
       .Day,
-      value: -articleRetention,
+      value: -1,
       toDate: today,
       options: NSCalendarOptions(rawValue: 0))
     
@@ -251,8 +253,7 @@ class CoreDataStack {
     deleteRequest.resultType = .ResultTypeCount
     
     do {
-      //TODO grab IDs and remove photos for removed items
-        let deletedArticles = try context.executeRequest(deleteRequest)
+        let deletedArticles = try privateContext.executeRequest(deleteRequest)
         print("Deleted Articles \(deletedArticles)")
         try context.save()
     } catch {

@@ -36,9 +36,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     NSURLCache.setSharedURLCache(urlCache)
     
     //Settings
-    articleRetentionDays = NSUserDefaults.standardUserDefaults().integerForKey("article_retention")
-    
-    print("******* Retention Days \(articleRetentionDays)")
+//    articleRetentionDays = NSUserDefaults.standardUserDefaults().integerForKey("article_retention")
+//    
+//    print("******* Retention Days \(articleRetentionDays)")
     //setup local notifications
     let notificationSettings = UIUserNotificationSettings(forTypes: [.Badge, .Alert], categories: nil)
     UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     articleViewController.imageService = imageService
     
     //delete older data
-    removeArticleImages()
+    //removeArticleImages()
     
     getArticles()
     
@@ -147,9 +147,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     UIApplication.sharedApplication().applicationIconBadgeNumber = 0
     
+    removeArticleImages()
+    
     getArticles()
     
-    removeArticleImages()
+    
     
     applicationRunningInBackground = false
     
