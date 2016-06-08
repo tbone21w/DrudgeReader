@@ -129,7 +129,7 @@
                         <barButtonItem key="rightBarButtonItem" id="44q-Qj-aPG">
                             <connections>
                                 <action selector="handleFilterClick:" destination="btP-Nd-MbL" id="kq6-MN-5e5"/>
-                                <segue destination="f11-EH-vht" kind="show" id="r0w-aD-aPq"/>
+                                <segue destination="ckR-6q-pGW" kind="presentation" identifier="showFilters" id="r0w-aD-aPq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -367,6 +367,20 @@
                             <outlet property="delegate" destination="f11-EH-vht" id="Aoq-I0-3Hx"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Filters" id="mev-f8-If6">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="YSG-Nf-EaT">
+                            <connections>
+                                <action selector="cancel:" destination="f11-EH-vht" id="kKA-Y3-198"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="eCb-7I-gQ6">
+                            <connections>
+                                <action selector="ApplyFilter:" destination="f11-EH-vht" id="0uf-5Q-Axw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="allContentCell" destination="fHE-ZU-h5S" id="8um-of-ODS"/>
                         <outlet property="columnSectionCell" destination="qw5-lM-stN" id="lDt-pr-9JM"/>
@@ -389,7 +403,7 @@
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="4321" y="-284"/>
+            <point key="canvasLocation" x="5133" y="-284"/>
         </scene>
         <!--Article Detail Controller-->
         <scene sceneID="ckV-zV-miW">
@@ -516,6 +530,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mw0-Kn-yaB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2717" y="387"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ogg-1C-QB1">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ckR-6q-pGW" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zDf-72-XZH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="f11-EH-vht" kind="relationship" relationship="rootViewController" id="ODE-xE-aRZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EPc-qD-XSf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4321" y="-284"/>
         </scene>
     </scenes>
 </document>

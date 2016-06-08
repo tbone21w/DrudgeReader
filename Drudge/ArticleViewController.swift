@@ -36,6 +36,9 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
   
   var settingsObserver:AnyObject?
   
+  var searchPredicate:NSPredicate? = NSPredicate(format: "1 = 1")
+  var sortDescriptor:NSSortDescriptor? = NSSortDescriptor(key: "updatedAt", ascending: false)
+  
   lazy var refreshControl: UIRefreshControl = {
     let refreshControl = UIRefreshControl()
     refreshControl.addTarget(self, action: #selector(handleRefresh), forControlEvents: UIControlEvents.ValueChanged)
@@ -67,6 +70,7 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
    override func viewDidLoad() {
     super.viewDidLoad()
 
+    
     //Handle settings
     getSettings()
 
@@ -115,16 +119,19 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
   func loadArticles() {
     fetchRequest = NSFetchRequest(entityName: "Article")
     
-    if showAll {
-      filterButton.image = DrudgeStyleKit.imageOfFilter
-    } else {
-      fetchRequest.predicate = NSPredicate(format: "read = false")
-      filterButton.image = DrudgeStyleKit.imageOfNoFilter
+    if let predicate = searchPredicate {
+      fetchRequest.predicate = predicate
     }
     
-    let sortDescriptor = NSSortDescriptor(key: "updatedAt", ascending: false)
-    fetchRequest.sortDescriptors = [sortDescriptor]
-    
+    if let sort = sortDescriptor {
+       fetchRequest.sortDescriptors = [sort]
+    } else {
+      //should not hit this but we must have a sort for fetched results controller to work
+      let sort = NSSortDescriptor(key: "updatedAt", ascending: false)
+      fetchRequest.sortDescriptors = [sort]
+    }
+
+  
     fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                           managedObjectContext: coreDataStack.context,
                                                           sectionNameKeyPath: nil,
@@ -350,7 +357,18 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
       let cell = sender as! ArticleTableViewCell
       vc.image = cell.articleImage.image
     }
+    
+    if segue.identifier == "showFilters" {
+      let nav = segue.destinationViewController as! UINavigationController
+      let vc = nav.topViewController as! FilterViewController
+      
+      vc.delegate = self
+      vc.selectedPredicate = searchPredicate
+      vc.selectedSort = sortDescriptor
+    }
   }
+  
+  
   
 }
 
@@ -367,5 +385,19 @@ extension ArticleViewController: NSFetchedResultsControllerDelegate {
     } else {
       showUpdateIndicator()
     }
+  }
+}
+
+
+extension ArticleViewController: FilterViewControllerDelegate {
+  func filterViewController(filter: FilterViewController,
+                            didSelectPredicate predicate:NSPredicate?,
+                                               sortDescriptor:NSSortDescriptor?) {
+    
+    self.searchPredicate = predicate
+    
+    self.sortDescriptor = sortDescriptor
+    
+    loadArticles()
   }
 }

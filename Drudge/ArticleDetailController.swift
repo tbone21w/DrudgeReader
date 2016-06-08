@@ -32,6 +32,7 @@ class ArticleDetailController: UIViewController, UIWebViewDelegate {
   }
   
   func loadPage() {
+    noResultsView.hidden = true
     let url:NSURL!
     
     if let href = article.href {
@@ -41,14 +42,16 @@ class ArticleDetailController: UIViewController, UIWebViewDelegate {
     }
     
     
+    
     let request = NSURLRequest(URL: url, cachePolicy: .ReturnCacheDataElseLoad, timeoutInterval: 20 )
     webView.loadRequest(request)
+    
   }
   
   
   func webViewDidStartLoad(webView: UIWebView) {
 
-    activityIndicator.hidden = false
+    activityIndicator.hidden = true
     activityIndicator.startAnimating()
   }
   
@@ -58,7 +61,8 @@ class ArticleDetailController: UIViewController, UIWebViewDelegate {
   }
   
   func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
-    noResultsView.hidden = false
+    print("code: \(error?.code)  userInfo.description: \(error?.userInfo.description)")
+    //noResultsView.hidden = false
     activityIndicator.hidden = true
     activityIndicator.stopAnimating()
   }

@@ -27,6 +27,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var applicationRunningInBackground = false
   
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    
+    let cacheSizeMemory = 4*1024*1024; // 4MB
+    let cacheSizeDisk = 32*1024*1024; // 32MB
+    
+    let urlCache = NSURLCache(memoryCapacity: cacheSizeMemory, diskCapacity: cacheSizeDisk, diskPath: "nsurlcache")
+    
+    NSURLCache.setSharedURLCache(urlCache)
+    
     //Settings
     articleRetentionDays = NSUserDefaults.standardUserDefaults().integerForKey("article_retention")
     
