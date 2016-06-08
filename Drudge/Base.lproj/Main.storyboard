@@ -374,7 +374,7 @@
                                 <action selector="cancel:" destination="f11-EH-vht" id="kKA-Y3-198"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="eCb-7I-gQ6">
+                        <barButtonItem key="rightBarButtonItem" title="Apply" id="eCb-7I-gQ6">
                             <connections>
                                 <action selector="ApplyFilter:" destination="f11-EH-vht" id="0uf-5Q-Axw"/>
                             </connections>
