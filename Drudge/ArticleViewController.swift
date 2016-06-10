@@ -79,10 +79,11 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
     tableView.dataSource = self
     
     
+    
     //style UI
     tableView.backgroundColor = UIColor.blackColor()
     
-    title = "Drudgin"
+    //title = "Drudgin"
     //self.navigationController?.navigationBar.barTintColor = DrudgeStyleKit.logoLines
     
     //setup fetchedResutlsController and get data
@@ -93,8 +94,8 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
     loadArticles()
 
     //Setup new article indicator
-    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleGetUpdate))
-    newUpdatesIndicator.addGestureRecognizer(tapGesture)
+    let iconTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleGetUpdate))
+    newUpdatesIndicator.addGestureRecognizer(iconTapGesture)
     newUpdatesIndicator.hidden = true
     newUpdatesIndicator.alpha = 0
 
@@ -103,9 +104,13 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
     
     navigationItem.titleView = UIImageView(image:  DrudgeStyleKit.imageOfMiniLogo2)
     
-    setFilterIcon()
+    let titleTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.scrollToTop))
+    navigationItem.titleView?.userInteractionEnabled = true
+    navigationItem.titleView?.addGestureRecognizer(titleTapGesture)
     
+    setFilterIcon()
   }
+  
   
   func setFilterIcon() {
     guard
@@ -213,6 +218,12 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
     })
   }
   
+  
+  func scrollToTop(sender:UIGestureRecognizer){
+    self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0,inSection: 0 ),
+                                          atScrollPosition: UITableViewScrollPosition.Top,
+                                          animated: true)
+  }
   
   func hideUpdateIndicator() {
     UIView.animateWithDuration(0.8, animations: {

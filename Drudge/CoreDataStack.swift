@@ -206,8 +206,8 @@ class CoreDataStack {
   }
 
   
-  func getArticlesToDelete() -> [Article]? {
-    let fetchRequest = getDeleteFetchRequest()
+  func getArticlesToDelete(days: Int) -> [Article]? {
+    let fetchRequest = getDeleteFetchRequest(days)
     
     var articles:[Article]?
     
@@ -224,7 +224,7 @@ class CoreDataStack {
   }
   
   
-  func getDeleteFetchRequest() -> NSFetchRequest {
+  func getDeleteFetchRequest(days: Int) -> NSFetchRequest {
     //TODO figure out how to grab a multi-value
 //    let articleRetention = NSUserDefaults.standardUserDefaults().integerForKey("article_retention")
 //    print("Article Retnetion \(articleRetention)")
@@ -233,9 +233,11 @@ class CoreDataStack {
 //    let retetionDays = articleRetention * -1
     
     let today = NSDate()
+    let deleteDays = days * -1
+    
     let cutOffDate = NSCalendar.currentCalendar().dateByAddingUnit(
       .Day,
-      value: -1,
+      value: deleteDays,
       toDate: today,
       options: NSCalendarOptions(rawValue: 0))
     
@@ -245,9 +247,9 @@ class CoreDataStack {
   }
   
   //TODO need a preference on how many days to keep for now 30
-  func cleanupOldArticles() {
+  func cleanupOldArticles(days: Int) {
     
-    let fetchRequest = getDeleteFetchRequest()
+    let fetchRequest = getDeleteFetchRequest(days)
     
     let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
     deleteRequest.resultType = .ResultTypeCount

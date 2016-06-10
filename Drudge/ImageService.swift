@@ -34,15 +34,15 @@ class ImageService {
     let url = NSURL(string: article.imageURL!)!
     let request = NSURLRequest(URL: url)
     
-    print("IMAGE KEY to find: \(article.getImageKey())")
+    print("IMAGE KEY to find: \(article.imageID))")
     
-    //check cache first
-    if let imageKey = article.getImageKey() {
-      if let image = imageStore.imageForKey(imageKey) {
-        print("RETURN Image from store")
-        completion(.Success(image))
-        return
-      }
+    
+    let imageKey:String
+    if let key = article.imageID {
+      imageKey = key
+    } else {
+      imageKey = NSUUID().UUIDString
+      article.imageID = imageKey
     }
     
     
@@ -55,7 +55,7 @@ class ImageService {
       let result = self.processImageRequest(data: data, error: error)
       
             if case let .Success(image) = result {
-              if let imageKey = article.getImageKey() {
+              if let imageKey = article.imageID {
                 print("Saved IMAGE KEY: \(imageKey)")
                 
                 //save image & entity

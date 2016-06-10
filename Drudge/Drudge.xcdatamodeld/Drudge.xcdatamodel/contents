@@ -4,6 +4,7 @@
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="href" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="imageID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isNew" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
@@ -17,6 +18,6 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="Article" positionX="-63" positionY="-18" width="128" height="180"/>
+        <element name="Article" positionX="-63" positionY="-18" width="128" height="195"/>
     </elements>
 </model>

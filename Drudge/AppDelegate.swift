@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var articleManager:ArticleManager!
   var drudgeAPI:DrudgeAPI!
   
-  var articleRetentionDays = 30
+  var articleRetentionDays:Int?
   
   var timer:NSTimer?
   
@@ -36,9 +36,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     NSURLCache.setSharedURLCache(urlCache)
     
     //Settings
-//    articleRetentionDays = NSUserDefaults.standardUserDefaults().integerForKey("article_retention")
-//    
-//    print("******* Retention Days \(articleRetentionDays)")
+    articleRetentionDays = NSUserDefaults.standardUserDefaults().objectForKey("article_retention") as? Int
+    
+    if articleRetentionDays == nil {
+       articleRetentionDays = 30
+       NSUserDefaults.standardUserDefaults().registerDefaults(["article_retention" : articleRetentionDays!])
+    }
+    
+    print("******* Retention Days \(articleRetentionDays)")
     //setup local notifications
     let notificationSettings = UIUserNotificationSettings(forTypes: [.Badge, .Alert], categories: nil)
     UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
@@ -61,7 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     articleViewController.imageService = imageService
     
     //delete older data
-    //removeArticleImages()
+    removeArticleImages(articleRetentionDays!)
     
     getArticles()
     
@@ -108,20 +113,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
   }
   
-  func removeArticleImages() {
-    let articlesToDelete = coreDataStack.getArticlesToDelete()
+  func removeArticleImages(days: Int) {
+    let articlesToDelete = coreDataStack.getArticlesToDelete(days)
     
     //remove any images related to articles
     if let articles = articlesToDelete {
       for article in articles {
-        if let key = article.getImageKey() {
+        if let key = article.imageID {
           imageStore.deleteImageForKey(key)
         }
       }
     }
     
     //remove images
-    coreDataStack.cleanupOldArticles()
+    coreDataStack.cleanupOldArticles(days)
   }
 
   func applicationWillResignActive(application: UIApplication) {
@@ -147,7 +152,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     UIApplication.sharedApplication().applicationIconBadgeNumber = 0
     
-    removeArticleImages()
+    removeArticleImages(articleRetentionDays! )
     
     getArticles()
     
