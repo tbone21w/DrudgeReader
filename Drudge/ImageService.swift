@@ -34,16 +34,13 @@ class ImageService {
     let url = NSURL(string: article.imageURL!)!
     let request = NSURLRequest(URL: url)
     
-    print("IMAGE KEY to find: \(article.imageID))")
-    
-    
-    let imageKey:String
     if let key = article.imageID {
-      imageKey = key
-    } else {
-      imageKey = NSUUID().UUIDString
-      article.imageID = imageKey
+      if let image = imageStore.imageForKey(key) {
+        completion(.Success(image))
+        return
+      }
     }
+    
     
     
     //fetch image
@@ -55,12 +52,15 @@ class ImageService {
       let result = self.processImageRequest(data: data, error: error)
       
             if case let .Success(image) = result {
-              if let imageKey = article.imageID {
-                print("Saved IMAGE KEY: \(imageKey)")
-                
-                //save image & entity
-                self.imageStore.setImage(image, forKey: imageKey)
-              }
+              let imageKey = NSUUID().UUIDString
+              article.imageID = imageKey
+              self.coreDataStack.backgroundSave = true
+              
+              print("New Image Found, flagging core data for background save.  Image Key: \(imageKey)")
+              
+              //save image & entity
+              self.imageStore.setImage(image, forKey: imageKey)
+              
             }
       
       completion(result)

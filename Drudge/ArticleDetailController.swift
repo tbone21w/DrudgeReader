@@ -61,8 +61,6 @@ class ArticleDetailController: UIViewController, UIWebViewDelegate {
   }
   
   func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
-    print("code: \(error?.code)  userInfo.description: \(error?.userInfo.description)")
-    //noResultsView.hidden = false
     activityIndicator.hidden = true
     activityIndicator.stopAnimating()
   }

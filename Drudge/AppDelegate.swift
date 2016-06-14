@@ -21,29 +21,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var drudgeAPI:DrudgeAPI!
   
   var articleRetentionDays:Int?
-  
+
   var timer:NSTimer?
   
   var applicationRunningInBackground = false
   
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
+    //Setup local url cache
     let cacheSizeMemory = 4*1024*1024; // 4MB
     let cacheSizeDisk = 32*1024*1024; // 32MB
     
     let urlCache = NSURLCache(memoryCapacity: cacheSizeMemory, diskCapacity: cacheSizeDisk, diskPath: "nsurlcache")
-    
     NSURLCache.setSharedURLCache(urlCache)
     
     //Settings
     articleRetentionDays = NSUserDefaults.standardUserDefaults().objectForKey("article_retention") as? Int
     
+    //This is required if users has not made settings changes this was comming back nil
     if articleRetentionDays == nil {
        articleRetentionDays = 30
        NSUserDefaults.standardUserDefaults().registerDefaults(["article_retention" : articleRetentionDays!])
     }
-    
-    print("******* Retention Days \(articleRetentionDays)")
+
     //setup local notifications
     let notificationSettings = UIUserNotificationSettings(forTypes: [.Badge, .Alert], categories: nil)
     UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
@@ -69,94 +69,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     removeArticleImages(articleRetentionDays!)
     
     getArticles()
-    
-    let url = DrudgeAPI.latestArticles()
-    print("Latest Articles URL \(url.absoluteString)")
-    
 
     setupActiveModeBackgroundProcessing()
     
-    //set background fetch
+    //set background fetch interval, used when app goes in background
     UIApplication
       .sharedApplication()
       .setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
     
     //global style
     self.window?.tintColor = DrudgeStyleKit.logoStroke
-   UINavigationBar
-    .appearance()
-    .titleTextAttributes = [NSForegroundColorAttributeName : DrudgeStyleKit.logoStroke]
     
-   // UINavigationBar.appearance().barTintColor = DrudgeStyleKit.logoLines
+    UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : DrudgeStyleKit.logoStroke]
+    
     return true
   }
-  
-  func getArticles() {
-    let articleCount = coreDataStack.getArticleCount()
-    
-    if  articleCount > 0 {
-      //get updates
-      print("Fetching Articles SINCE")
-      if let maxDate = coreDataStack.getMostRecentArticleDate() {
-        articleManager.fetchArticleSinceDate(maxDate, completion: {
-          (drudgeAPIResult) -> Void in
-          self.handleDrudgeAPIResult(drudgeAPIResult)
-        })
-      }
-    } else {
-      //get latest data
-      print("Fetching ALL Articles")
-      articleManager.fetchRecentArticles({
-        (drudgeAPIResult) -> Void in
-        self.handleDrudgeAPIResult(drudgeAPIResult)
-      })
-    }
-  }
-  
-  func removeArticleImages(days: Int) {
-    let articlesToDelete = coreDataStack.getArticlesToDelete(days)
-    
-    //remove any images related to articles
-    if let articles = articlesToDelete {
-      for article in articles {
-        if let key = article.imageID {
-          imageStore.deleteImageForKey(key)
-        }
-      }
-    }
-    
-    //remove images
-    coreDataStack.cleanupOldArticles(days)
-  }
 
-  func applicationWillResignActive(application: UIApplication) {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-
-  }
 
   func applicationDidEnterBackground(application: UIApplication) {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    // backgroundmode supported, this method is called instead of applicationWillTerminate: when the user quits.
+    
     applicationRunningInBackground = true
     
     //invalidate the timers going into 'App' background
     if let timer = timer {
-      print("Invalidating Timer")
       timer.invalidate()
     }
     timer = nil
   }
+  
 
   func applicationWillEnterForeground(application: UIApplication) {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    // Called as part of the transition from the background to the inactive state; 
+    //here you can undo many of the changes made on entering the background.
     UIApplication.sharedApplication().applicationIconBadgeNumber = 0
     
     removeArticleImages(articleRetentionDays! )
     
     getArticles()
-    
-    
     
     applicationRunningInBackground = false
     
@@ -164,27 +114,70 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
   }
 
-  func applicationDidBecomeActive(application: UIApplication) {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-  }
-
-  func applicationWillTerminate(application: UIApplication) {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-  }
-  
+  // Implementing this will turn on background mode processing
   func  application(application: UIApplication,
                     performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
     
     checkForNewArticlesBackground(completionHandler)
-    
   }
+  
+  
+  /**
+   * Checks local data and if user has no data or cleared the data it will fetch the current batch of articles.  If the
+   * user has data then we will figure out the last updated time and get articles since then.
+   */
+  func getArticles() {
+    let articleCount = coreDataStack.getArticleCount()
+    
+    if  articleCount > 0 {
+      //get updates
+      if let maxDate = coreDataStack.getMostRecentArticleDate() {
+        articleManager.fetchArticleSinceDate(maxDate,
+                                             retentionDays: articleRetentionDays,
+                                             completion: {
+          (drudgeAPIResult) -> Void in
+          self.handleDrudgeAPIResult(drudgeAPIResult)
+        })
+      }
+    } else {
+      //get latest data
+      articleManager.fetchRecentArticles({
+        (drudgeAPIResult) -> Void in
+        self.handleDrudgeAPIResult(drudgeAPIResult)
+      })
+    }
+  }
+  
+  
+  func removeArticleImages(days: Int) {
+    let articlesToDelete = coreDataStack.getArticlesToDelete(days)
+    print("articlesToDelete \(articlesToDelete?.count)")
+    //remove any images related to articles
+    if let articles = articlesToDelete {
+      for article in articles {
+        if let key = article.imageID {
+          imageStore.deleteImageForKey(key)
+        }
+        coreDataStack.privateContext.deleteObject(article)
+      }
+      
+      //save changes
+      do {
+        try coreDataStack.saveContext()
+      } catch {
+        print (error)
+      }
+      
+    }
+    
+    
+
+  }
+  
   
   func handleDrudgeAPIResult(drudgeAPIResult: DrudgeAPIResult) {
     
-    switch drudgeAPIResult {
-    case let .Success(articles):
-      print("Loaded \(articles.count)")
-    case let .Failure(error):
+    if case let .Failure(error) = drudgeAPIResult {
       print("Failed to load Articles \(error)")
       
       //We may not need this check
@@ -192,7 +185,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let drudgeError = error as! DrudgeAPIError
         
         if drudgeError == DrudgeAPIError.NilData {
-          print("Network error \(error)")
+          
           let alert = UIAlertController(title: "Error Loading Data",
                                         message: "Network Error",
                                         preferredStyle: UIAlertControllerStyle.Alert)
@@ -208,17 +201,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
   }
   
+  
   func setupActiveModeBackgroundProcessing() {
-    print("Adding Timer")
     timer = NSTimer(timeInterval: (5.0 * 60), target: self, selector: #selector(checkForNewArticles), userInfo: nil, repeats: true)
     
     NSRunLoop.currentRunLoop().addTimer(timer!, forMode: NSRunLoopCommonModes)
   }
   
+  
   func checkForNewArticles() {
-    print("Active App Background Check For new Articles")
     if let maxDate = coreDataStack.getMostRecentArticleDate() {
-      articleManager.fetchArticleSinceDate(maxDate, completion: {
+      articleManager.fetchArticleSinceDate(maxDate,
+                                           retentionDays: articleRetentionDays,
+                                           completion: {
         (drudgeAPIResult) -> Void in
         
         self.handleDrudgeAPIResult(drudgeAPIResult)
@@ -229,14 +224,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   
   func checkForNewArticlesBackground(completion: (UIBackgroundFetchResult) -> Void) {
-    print("Background Check For new Articles")
     if let maxDate = coreDataStack.getMostRecentArticleDate() {
-      articleManager.fetchArticleSinceDate(maxDate, completion: {
+      articleManager.fetchArticleSinceDate(maxDate,
+                                           retentionDays: articleRetentionDays,
+                                           completion: {
         (drudgeAPIResult) -> Void in
         
         switch drudgeAPIResult {
           case let .Success(articles):
-              print("Loaded \(articles.count)")
               if articles.count > 0 {
                   if self.applicationRunningInBackground {
                     self.scheduleLocalNotificaiton()
@@ -245,8 +240,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
               } else {
                 completion(.NoData)
               }
-          case let .Failure(error):
-              print("Failed to load Articles \(error)")
+          case .Failure(_):
               completion(.NoData)
         }
         
@@ -254,6 +248,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
   }
   
+  
+  /**
+   * schedules a local notification to be displayed showing all the 'New' Articles shince the users last used the app.
+   */
   func scheduleLocalNotificaiton() {
     
     //todo get total new articles
@@ -265,38 +263,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       localNotification.alertBody = "New Articles have been posted"
       localNotification.applicationIconBadgeNumber = count
       UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
-    }
-    
-  }
-  
-  func deleteData() {
-    let fetchRequest = NSFetchRequest(entityName: "Article")
-    var error: NSError? = nil
-    
-    let results =
-      coreDataStack.context.countForFetchRequest(fetchRequest,
-                                                 error: &error)
-    if (results >= 0) {
-      
-      do {
-        let results =
-          try coreDataStack.context.executeFetchRequest(fetchRequest) as! [Article]
-        
-        for object in results {
-          let article = object as Article
-          coreDataStack.context.deleteObject(article)
-        }
-        
-        do {
-          try coreDataStack.saveContext()
-        } catch let error as NSError {
-          print("Error cleaning up core data \(error)")
-        }
-
-        
-      } catch let error as NSError {
-        print("Error fetching: \(error.localizedDescription)")
-      }
     }
   }
   

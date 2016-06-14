@@ -67,24 +67,18 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
     //Handle settings
     getSettings()
 
-    settingsObserver = NSNotificationCenter.defaultCenter().addObserverForName(NSUserDefaultsDidChangeNotification, object: nil, queue: NSOperationQueue.mainQueue(), usingBlock: { (notificaiton) in
+    settingsObserver = NSNotificationCenter
+      .defaultCenter()
+      .addObserverForName(NSUserDefaultsDidChangeNotification, object: nil, queue: NSOperationQueue.mainQueue(), usingBlock: { (notificaiton) in
       self.settingsChangedHandler()
     })
     
     
-
     tableView.scrollIndicatorInsets = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0);
     
     //setup tableview
     tableView.dataSource = self
     
-    
-    
-    //style UI
-    tableView.backgroundColor = UIColor.blackColor()
-    
-    //title = "Drudgin"
-    //self.navigationController?.navigationBar.barTintColor = DrudgeStyleKit.logoLines
     
     //setup fetchedResutlsController and get data
     showAll = true
@@ -102,7 +96,9 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
     //setup pull to refresh
     tableView.addSubview(refreshControl)
     
-    navigationItem.titleView = UIImageView(image:  DrudgeStyleKit.imageOfMiniLogo2)
+    //Swap out when we get a logo
+    title = "Drudge Reader"
+    //navigationItem.titleView = UIImageView(image:  DrudgeStyleKit.imageOfMiniLogo2)
     
     let titleTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.scrollToTop))
     navigationItem.titleView?.userInteractionEnabled = true
@@ -122,8 +118,7 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
     }
     
     let allPredicate = NSPredicate(format: "'1' = '1'")
-    print("\(search.predicateFormat)  \(sort.key )  \(sort.ascending)")
-    //
+
     if search.predicateFormat == allPredicate.predicateFormat && sort.key! == "updatedAt" && !sort.ascending {
       filterButton.image = DrudgeStyleKit.imageOfFilter
     } else {
@@ -162,7 +157,10 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
       try fetchedResultsController.performFetch()
       tableView.reloadData()
     } catch let error as NSError {
-      print("Error: \(error.localizedDescription)")
+        let alertController = UIAlertController(title: "Error", message: "FetchedResultsController Error Loading Data - \(error.code)", preferredStyle: .Alert)
+        let dismissAction = UIAlertAction(title: "Dismiss", style: .Default, handler: nil)
+        alertController.addAction(dismissAction)
+      self.presentViewController(alertController, animated: true, completion: nil)
     }
   }
   
@@ -190,14 +188,36 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
     
     if let maxDate = coreDataStack.getMostRecentArticleDate() {
       immediateTableUpdate = true
-      articleManager.fetchArticleSinceDate(maxDate, completion: {
+      
+      let articleRetentionDays = getArticleRetentionDays()
+      
+      articleManager.fetchArticleSinceDate(maxDate,
+                                           retentionDays: articleRetentionDays,
+                                           completion: {
         (drudgeAPIResult) -> Void in
     
         self.immediateTableUpdate = false
         self.refreshControl.endRefreshing()
         
       })
+    } else {
+      self.immediateTableUpdate = false
+      self.refreshControl.endRefreshing()
     }
+  }
+  
+  
+  //Move to a utlity class, we have this in app delegate
+  func getArticleRetentionDays() -> Int {
+    var articleRetentionDays = NSUserDefaults.standardUserDefaults().objectForKey("article_retention") as? Int
+    
+    //This is required if users has not made settings changes this was comming back nil
+    if articleRetentionDays == nil {
+      articleRetentionDays = 30
+      NSUserDefaults.standardUserDefaults().registerDefaults(["article_retention" : articleRetentionDays!])
+    }
+    
+    return articleRetentionDays!
   }
   
   
@@ -339,9 +359,7 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
   }
 
   override func viewWillDisappear(animated: Bool) {
-    print("ArticleViewController viewWillDisappear")
     if let observer = settingsObserver {
-      print("Removing settings observer")
       NSNotificationCenter.defaultCenter().removeObserver(observer)
     }
   }
@@ -393,8 +411,6 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
     }
   }
   
-  
-  
 }
 
 
@@ -404,12 +420,24 @@ extension ArticleViewController: NSFetchedResultsControllerDelegate {
   //when tapped we will load in the new records.
   
   func controllerDidChangeContent(controller: NSFetchedResultsController) {
-    if tableView.numberOfRowsInSection(0) == 0 || immediateTableUpdate {
-      tableView.reloadData()
-      
+    
+    //background save required
+    if coreDataStack.backgroundSave {
+      do {
+        try coreDataStack.saveContext()
+      } catch {
+        //ignore for now
+      }
+      coreDataStack.backgroundSave = false
     } else {
-      showUpdateIndicator()
+      if tableView.numberOfRowsInSection(0) == 0 || immediateTableUpdate {
+        tableView.reloadData()
+        
+      } else {
+        showUpdateIndicator()
+      }
     }
+    
   }
 }
 

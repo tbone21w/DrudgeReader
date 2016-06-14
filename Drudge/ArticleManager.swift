@@ -37,14 +37,17 @@ class ArticleManager {
  
   
   
-  func fetchArticleSinceDate(lastUpdated: NSDate, completion: (DrudgeAPIResult) -> Void) {
+  func fetchArticleSinceDate(lastUpdated: NSDate, retentionDays: Int?, completion: (DrudgeAPIResult) -> Void) {
+    
+ 
     
     let formattedDate = DrudgeAPI.formatterISO8601.stringFromDate(lastUpdated)
     
     let url = DrudgeAPI.articlesSince(formattedDate)
     let request = NSURLRequest(URL: url)
     
-    print("Request : \(url.absoluteString)")
+    print(" ")
+    print("Fetching Articles since \(lastUpdated) from \(url)")
     
     //Async, need a way to tell UI we are working and then update NSFetchedResultsController??
     let task = session.dataTaskWithRequest(request, completionHandler: {
@@ -55,17 +58,30 @@ class ArticleManager {
         return completion(DrudgeAPIResult.Failure(DrudgeAPIError.NetworkError))
       }
       
-      //vheck for data first
+      //check for data first
       var result = self.drudgeAPI.articlesFromJSONData(inContext: self.coreDataStack.privateContext, data: data)
       
       //if we successfully fetched articles
       if case let .Success(articles) = result {
+        
+        print("Found \(articles.count) Article(s)")
+        
         
         
         //TODO this is always setting to true but we insert or update in the drudgeAPI.articlesFromJSONData, 
         //updated articels are not new
         for article in articles {
           article.isNew = true
+          
+          //check to see if we need to ignore this article
+          if retentionDays != nil {
+            if let updatedAt = article.updatedAt {
+              let cutOffDate = NSDate().dateByAddingTimeInterval(-1*Double(retentionDays!)*24*60*60)
+              if updatedAt.compare(cutOffDate) == NSComparisonResult.OrderedAscending {
+                print("article date \(article.updatedAt) is older than cutoff \(cutOffDate)")
+              }
+            }
+          }
         }
         
         do {
@@ -92,13 +108,15 @@ class ArticleManager {
     let url = DrudgeAPI.latestArticles()
     let request = NSURLRequest(URL: url)
     
+    print("Fetching ALL Articles \(url)")
+    
     let task = session.dataTaskWithRequest(request, completionHandler: {
       (data, response, error) -> Void in
       
       var result = self.drudgeAPI.articlesFromJSONData(inContext: self.coreDataStack.context, data: data)
   
       //if we successfully fetched articles
-      if case let .Success(articles) = result {
+      if case .Success(_) = result {
         //TODO save article photo
         do {
           try self.coreDataStack.saveContext()
@@ -115,30 +133,6 @@ class ArticleManager {
     
     task.resume()
   }
-  
-  
-  func insertMockData()  {
-    var articles:[Article] = [Article]()
-    
-    let articleEntity = NSEntityDescription.entityForName("Article", inManagedObjectContext: coreDataStack.context)
-    
-    for i in 1 ... 2 {
-      let article = Article(entity: articleEntity!, insertIntoManagedObjectContext: coreDataStack.context)
-      
-      article.id = i
-      article.title = "Russia blames USA 'dark arts' for EUROVISION upset...  article \(i)"
-      article.href = "http://www.google.com"
-      
-      articles.append(article)
-    }
-    
-    do {
-      try coreDataStack.context.save()
-    } catch let error as NSError {
-      print("Error inserting mock data: \(error.localizedDescription)")
-    }
-  }
-
   
   
 }

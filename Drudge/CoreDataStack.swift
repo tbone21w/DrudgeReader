@@ -11,9 +11,8 @@ import CoreData
 
 class CoreDataStack {
   
-  
   let modelName = "Drudge"
-  
+  var backgroundSave = false
   
   lazy var context: NSManagedObjectContext = {
     var managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
@@ -40,7 +39,6 @@ class CoreDataStack {
     
     let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
     let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent(self.modelName)
-    print("CORE DATA PATH \(url)")
     
     do {
       let options = [NSMigratePersistentStoresAutomaticallyOption : true]
@@ -77,16 +75,17 @@ class CoreDataStack {
   // MARK: CoreData Operations
   func saveContext () throws {
     
+    
     var error: ErrorType?
     
     //propagate any child context changes to the parent
     privateContext.performBlockAndWait { () -> Void in
       if self.privateContext.hasChanges {
         do {
+          print("Saving private context...")
           try self.privateContext.save()
         } catch let saveError as NSError {
             error = saveError
-            print("Could not save \(saveError), \(saveError.code), \(saveError.localizedFailureReason)")
         }
       }
     }
@@ -100,9 +99,9 @@ class CoreDataStack {
     context.performBlockAndWait { () -> Void in
       if self.context.hasChanges {
         do {
+          print("Saving main context...")
           try self.context.save()
         } catch let saveError as NSError {
-          print("Error: \(saveError.localizedDescription)")
           error = saveError
         }
       }
@@ -126,8 +125,9 @@ class CoreDataStack {
       let results = try privateContext.executeFetchRequest(fetchRequest) as! [NSNumber]
       
       count = results.first!.integerValue
-    } catch let error as NSError {
-      print("Could not fetch \(error), \(error.userInfo)")
+    } catch {
+      //consider propagating this up the call 
+      count = 0
     }
     
     return count
@@ -225,12 +225,8 @@ class CoreDataStack {
   
   
   func getDeleteFetchRequest(days: Int) -> NSFetchRequest {
-    //TODO figure out how to grab a multi-value
-//    let articleRetention = NSUserDefaults.standardUserDefaults().integerForKey("article_retention")
-//    print("Article Retnetion \(articleRetention)")
-//    
+ 
     let fetchRequest = NSFetchRequest(entityName: "Article")
-//    let retetionDays = articleRetention * -1
     
     let today = NSDate()
     let deleteDays = days * -1
@@ -245,24 +241,6 @@ class CoreDataStack {
     
     return fetchRequest
   }
-  
-  //TODO need a preference on how many days to keep for now 30
-  func cleanupOldArticles(days: Int) {
-    
-    let fetchRequest = getDeleteFetchRequest(days)
-    
-    let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-    deleteRequest.resultType = .ResultTypeCount
-    
-    do {
-        let deletedArticles = try privateContext.executeRequest(deleteRequest)
-        print("Deleted Articles \(deletedArticles)")
-        try context.save()
-    } catch {
-      print (error)
-    }
-  }
-  
   
   
 }

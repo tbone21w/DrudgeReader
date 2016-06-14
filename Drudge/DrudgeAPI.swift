@@ -71,14 +71,10 @@ class DrudgeAPI {
       }
     }
     
-   
-    
     components.queryItems = queryItems
 
     let url = components.URL!.URLByAppendingPathComponent(path.rawValue)
     
-   
-
     return url
   }
   
@@ -99,7 +95,6 @@ class DrudgeAPI {
         jsonArticles = jsonObject as? [[String:AnyObject]]
         
         else {
-          print("The JSON structure doesn't match our expectations")
           return .Failure(DrudgeAPIError.InvalidJSONData)
       }
       
@@ -114,11 +109,8 @@ class DrudgeAPI {
         }
       }
       
-      print("Number of Articles: \(articles.count)")
-      
       return .Success(articles)
     } catch let error {
-      print("Error serializing data to JSON \(error)")
       return .Failure(DrudgeAPIError.InvalidJSONData)
     }
   }
