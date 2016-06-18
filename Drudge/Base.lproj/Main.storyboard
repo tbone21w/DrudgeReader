@@ -9,7 +9,7 @@
         <!--Article View Controller-->
         <scene sceneID="lY4-Ni-mkp">
             <objects>
-                <viewController id="btP-Nd-MbL" customClass="ArticleViewController" customModule="Drudge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="btP-Nd-MbL" customClass="ArticleViewController" customModule="Drudge_Reader" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="77H-w8-xrh"/>
                         <viewControllerLayoutGuide type="bottom" id="mNF-pa-Z4z"/>
@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="articleTableViewCell" id="UC6-Le-f22" customClass="ArticleTableViewCell" customModule="Drudge" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="articleTableViewCell" id="UC6-Le-f22" customClass="ArticleTableViewCell" customModule="Drudge_Reader" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UC6-Le-f22" id="5av-DM-koP">
@@ -105,7 +105,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCk-2p-VJZ" userLabel="NewUpdatesIndicator" customClass="UpdateIndicator" customModule="Drudge" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCk-2p-VJZ" userLabel="NewUpdatesIndicator" customClass="UpdateIndicator" customModule="Drudge_Reader" customModuleProvider="target">
                                 <rect key="frame" x="254" y="5" width="93" height="27"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -141,14 +141,14 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Yl-kF-dcI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="pWm-pc-0Nm" customClass="DrudgeStyleKit" customModule="Drudge" customModuleProvider="target"/>
+                <customObject id="pWm-pc-0Nm" customClass="DrudgeStyleKit" customModule="Drudge_Reader" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="3529" y="387"/>
         </scene>
         <!--Filters-->
         <scene sceneID="aVh-9y-Sno">
             <objects>
-                <tableViewController title="Filters" id="f11-EH-vht" customClass="FilterViewController" customModule="Drudge" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Filters" id="f11-EH-vht" customClass="FilterViewController" customModule="Drudge_Reader" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="9an-SL-fpo">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -369,7 +369,7 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Filters" id="mev-f8-If6">
-                        <barButtonItem key="leftBarButtonItem" title="Apply" id="YSG-Nf-EaT">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="YSG-Nf-EaT">
                             <connections>
                                 <action selector="ApplyFilter:" destination="f11-EH-vht" id="Krg-6H-o9x"/>
                             </connections>
@@ -395,7 +395,7 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ait-4f-Lc7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="cqO-YL-QBB" customClass="DrudgeStyleKit" customModule="Drudge" customModuleProvider="target">
+                <customObject id="cqO-YL-QBB" customClass="DrudgeStyleKit" customModule="Drudge_Reader" customModuleProvider="target">
                     <connections>
                         <outletCollection property="headline_iconTargets" destination="PP1-tM-ebt" collectionClass="NSMutableArray" id="mVe-zo-oOq"/>
                         <outletCollection property="top_storyTargets" destination="EY7-H6-jFA" collectionClass="NSMutableArray" id="Tig-ed-1O9"/>
@@ -408,7 +408,7 @@
         <!--Article Detail Controller-->
         <scene sceneID="ckV-zV-miW">
             <objects>
-                <viewController id="Y1o-Q1-GOV" customClass="ArticleDetailController" customModule="Drudge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Y1o-Q1-GOV" customClass="ArticleDetailController" customModule="Drudge_Reader" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Fdv-89-6yr"/>
                         <viewControllerLayoutGuide type="bottom" id="a0i-Vg-1SZ"/>
@@ -484,7 +484,7 @@
         <!--Image View Controller-->
         <scene sceneID="VxG-WN-ny6">
             <objects>
-                <viewController id="yPl-iO-0IO" customClass="ImageViewController" customModule="Drudge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="yPl-iO-0IO" customClass="ImageViewController" customModule="Drudge_Reader" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FXj-aB-2PQ"/>
                         <viewControllerLayoutGuide type="bottom" id="SJX-eO-eBN"/>
