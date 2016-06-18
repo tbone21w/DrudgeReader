@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Drudge.xcodeproj">
+      location = "self:/Users/todd.isaacs/ios/Drudge/Drudge Reader.xcodeproj">
    </FileRef>
 </Workspace>

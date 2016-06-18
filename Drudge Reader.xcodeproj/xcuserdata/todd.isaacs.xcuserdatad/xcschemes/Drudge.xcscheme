@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "32C6DC8C1CE9345E00ADF8C9"
-               BuildableName = "Drudge.app"
-               BlueprintName = "Drudge"
-               ReferencedContainer = "container:Drudge.xcodeproj">
+               BuildableName = "Drudge Reader.app"
+               BlueprintName = "Drudge Reader"
+               ReferencedContainer = "container:Drudge Reader.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "32C6DCA01CE9345E00ADF8C9"
-               BuildableName = "DrudgeTests.xctest"
-               BlueprintName = "DrudgeTests"
-               ReferencedContainer = "container:Drudge.xcodeproj">
+               BuildableName = "Drudge Reader.xctest"
+               BlueprintName = "Drudge ReaderTests"
+               ReferencedContainer = "container:Drudge Reader.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "32C6DCAB1CE9345E00ADF8C9"
-               BuildableName = "DrudgeUITests.xctest"
-               BlueprintName = "DrudgeUITests"
-               ReferencedContainer = "container:Drudge.xcodeproj">
+               BuildableName = "Drudge Reader.xctest"
+               BlueprintName = "Drudge ReaderUITests"
+               ReferencedContainer = "container:Drudge Reader.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "32C6DC8C1CE9345E00ADF8C9"
-            BuildableName = "Drudge.app"
-            BlueprintName = "Drudge"
-            ReferencedContainer = "container:Drudge.xcodeproj">
+            BuildableName = "Drudge Reader.app"
+            BlueprintName = "Drudge Reader"
+            ReferencedContainer = "container:Drudge Reader.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "32C6DC8C1CE9345E00ADF8C9"
-            BuildableName = "Drudge.app"
-            BlueprintName = "Drudge"
-            ReferencedContainer = "container:Drudge.xcodeproj">
+            BuildableName = "Drudge Reader.app"
+            BlueprintName = "Drudge Reader"
+            ReferencedContainer = "container:Drudge Reader.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
@@ -101,9 +101,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "32C6DC8C1CE9345E00ADF8C9"
-            BuildableName = "Drudge.app"
-            BlueprintName = "Drudge"
-            ReferencedContainer = "container:Drudge.xcodeproj">
+            BuildableName = "Drudge Reader.app"
+            BlueprintName = "Drudge Reader"
+            ReferencedContainer = "container:Drudge Reader.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
