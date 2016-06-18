@@ -110,7 +110,7 @@ class DrudgeAPI {
       }
       
       return .Success(articles)
-    } catch let error {
+    } catch  _ {
       return .Failure(DrudgeAPIError.InvalidJSONData)
     }
   }
