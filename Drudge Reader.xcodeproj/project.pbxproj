@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		322200C81D1640BE00AC7D93 /* logoLaunchIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 329B064B1D15D18E00E576A1 /* logoLaunchIcon.png */; };
 		322739A11CF8AD3D00820A35 /* Image+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3227399E1CF8AD3D00820A35 /* Image+CoreDataProperties.swift */; };
 		322739A21CF8AD3D00820A35 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3227399F1CF8AD3D00820A35 /* Location+CoreDataProperties.swift */; };
 		322739A31CF8AD3D00820A35 /* Article+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322739A01CF8AD3D00820A35 /* Article+CoreDataProperties.swift */; };
@@ -19,7 +20,6 @@
 		3262A3731CF5FA5C00CC9AFA /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3262A3721CF5FA5C00CC9AFA /* ImageService.swift */; };
 		326AD5271CF1E41D00CF15FB /* articles2.json in Resources */ = {isa = PBXBuildFile; fileRef = 326AD5261CF1E41D00CF15FB /* articles2.json */; };
 		329695A11CFE2B11007EC869 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 329695A01CFE2B11007EC869 /* Settings.bundle */; };
-		329B064C1D15D18E00E576A1 /* logoLaunchIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 329B064B1D15D18E00E576A1 /* logoLaunchIcon.png */; };
 		32C0333A1CEF8D0A00E4AF46 /* articles.json in Resources */ = {isa = PBXBuildFile; fileRef = 32C033391CEF8D0A00E4AF46 /* articles.json */; };
 		32C6DC911CE9345E00ADF8C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C6DC901CE9345E00ADF8C9 /* AppDelegate.swift */; };
 		32C6DC961CE9345E00ADF8C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32C6DC941CE9345E00ADF8C9 /* Main.storyboard */; };
@@ -127,11 +127,11 @@
 		32C6DC841CE9345E00ADF8C9 = {
 			isa = PBXGroup;
 			children = (
+				329B064B1D15D18E00E576A1 /* logoLaunchIcon.png */,
 				329695A01CFE2B11007EC869 /* Settings.bundle */,
 				324C852E1CFB7700007A1C9E /* NSDate+Extension.swift */,
 				324C852F1CFB7700007A1C9E /* NSDateTimeAgo.bundle */,
 				32E69C151CEC893E00067B5E /* Image.swift */,
-				329B064B1D15D18E00E576A1 /* logoLaunchIcon.png */,
 				32E69C171CEC893E00067B5E /* Location.swift */,
 				32F97BE31CEB47E00023551D /* Article.swift */,
 				3227399E1CF8AD3D00820A35 /* Image+CoreDataProperties.swift */,
@@ -315,7 +315,7 @@
 				326AD5271CF1E41D00CF15FB /* articles2.json in Resources */,
 				32C6DC9B1CE9345E00ADF8C9 /* LaunchScreen.storyboard in Resources */,
 				32C6DC981CE9345E00ADF8C9 /* Assets.xcassets in Resources */,
-				329B064C1D15D18E00E576A1 /* logoLaunchIcon.png in Resources */,
+				322200C81D1640BE00AC7D93 /* logoLaunchIcon.png in Resources */,
 				32C6DC961CE9345E00ADF8C9 /* Main.storyboard in Resources */,
 				322E1E311CF488A2004D071F /* assets in Resources */,
 				329695A11CFE2B11007EC869 /* Settings.bundle in Resources */,
