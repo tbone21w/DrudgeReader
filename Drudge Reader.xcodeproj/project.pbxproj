@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		322200C81D1640BE00AC7D93 /* logoLaunchIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 329B064B1D15D18E00E576A1 /* logoLaunchIcon.png */; };
 		322739A11CF8AD3D00820A35 /* Image+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3227399E1CF8AD3D00820A35 /* Image+CoreDataProperties.swift */; };
 		322739A21CF8AD3D00820A35 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3227399F1CF8AD3D00820A35 /* Location+CoreDataProperties.swift */; };
 		322739A31CF8AD3D00820A35 /* Article+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322739A01CF8AD3D00820A35 /* Article+CoreDataProperties.swift */; };
 		322746FC1CFF8E5100577DB9 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322746FB1CFF8E5100577DB9 /* FilterViewController.swift */; };
 		322E1E2C1CF4034E004D071F /* DrudgeStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322E1E2B1CF4034E004D071F /* DrudgeStyleKit.swift */; };
 		322E1E311CF488A2004D071F /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 322E1E301CF488A2004D071F /* assets */; };
-		322E1E351CF4F49D004D071F /* logoLaunchIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 322E1E341CF4F49D004D071F /* logoLaunchIcon.png */; };
 		324C85301CFB7700007A1C9E /* NSDate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324C852E1CFB7700007A1C9E /* NSDate+Extension.swift */; };
 		324C85311CFB7700007A1C9E /* NSDateTimeAgo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 324C852F1CFB7700007A1C9E /* NSDateTimeAgo.bundle */; };
 		3262A3711CF5F73200CC9AFA /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3262A3701CF5F73200CC9AFA /* ImageStore.swift */; };
@@ -65,25 +65,25 @@
 		322746FB1CFF8E5100577DB9 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		322E1E2B1CF4034E004D071F /* DrudgeStyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrudgeStyleKit.swift; sourceTree = "<group>"; };
 		322E1E301CF488A2004D071F /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
-		322E1E341CF4F49D004D071F /* logoLaunchIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logoLaunchIcon.png; path = assets/logoLaunchIcon.png; sourceTree = "<group>"; };
 		324C852E1CFB7700007A1C9E /* NSDate+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Extension.swift"; sourceTree = "<group>"; };
 		324C852F1CFB7700007A1C9E /* NSDateTimeAgo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NSDateTimeAgo.bundle; sourceTree = "<group>"; };
 		3262A3701CF5F73200CC9AFA /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		3262A3721CF5FA5C00CC9AFA /* ImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		326AD5261CF1E41D00CF15FB /* articles2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = articles2.json; sourceTree = "<group>"; };
 		329695A01CFE2B11007EC869 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		329B064B1D15D18E00E576A1 /* logoLaunchIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoLaunchIcon.png; sourceTree = "<group>"; };
 		32C033391CEF8D0A00E4AF46 /* articles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = articles.json; sourceTree = "<group>"; };
-		32C6DC8D1CE9345E00ADF8C9 /* Drudge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drudge.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		32C6DC8D1CE9345E00ADF8C9 /* Drudge Reader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Drudge Reader.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32C6DC901CE9345E00ADF8C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32C6DC921CE9345E00ADF8C9 /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		32C6DC951CE9345E00ADF8C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		32C6DC971CE9345E00ADF8C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32C6DC9A1CE9345E00ADF8C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32C6DC9C1CE9345E00ADF8C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		32C6DCA11CE9345E00ADF8C9 /* DrudgeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrudgeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		32C6DCA11CE9345E00ADF8C9 /* Drudge Reader.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Drudge Reader.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32C6DCA51CE9345E00ADF8C9 /* DrudgeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrudgeTests.swift; sourceTree = "<group>"; };
 		32C6DCA71CE9345E00ADF8C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		32C6DCAC1CE9345E00ADF8C9 /* DrudgeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrudgeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		32C6DCAC1CE9345E00ADF8C9 /* Drudge Reader.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Drudge Reader.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32C6DCB01CE9345E00ADF8C9 /* DrudgeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrudgeUITests.swift; sourceTree = "<group>"; };
 		32C6DCB21CE9345E00ADF8C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32C6DCC01CE95AAE00ADF8C9 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
@@ -127,6 +127,7 @@
 		32C6DC841CE9345E00ADF8C9 = {
 			isa = PBXGroup;
 			children = (
+				329B064B1D15D18E00E576A1 /* logoLaunchIcon.png */,
 				329695A01CFE2B11007EC869 /* Settings.bundle */,
 				324C852E1CFB7700007A1C9E /* NSDate+Extension.swift */,
 				324C852F1CFB7700007A1C9E /* NSDateTimeAgo.bundle */,
@@ -136,7 +137,6 @@
 				3227399E1CF8AD3D00820A35 /* Image+CoreDataProperties.swift */,
 				3227399F1CF8AD3D00820A35 /* Location+CoreDataProperties.swift */,
 				322739A01CF8AD3D00820A35 /* Article+CoreDataProperties.swift */,
-				322E1E341CF4F49D004D071F /* logoLaunchIcon.png */,
 				322E1E301CF488A2004D071F /* assets */,
 				322E1E2B1CF4034E004D071F /* DrudgeStyleKit.swift */,
 				32C6DC8F1CE9345E00ADF8C9 /* Drudge */,
@@ -149,9 +149,9 @@
 		32C6DC8E1CE9345E00ADF8C9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				32C6DC8D1CE9345E00ADF8C9 /* Drudge.app */,
-				32C6DCA11CE9345E00ADF8C9 /* DrudgeTests.xctest */,
-				32C6DCAC1CE9345E00ADF8C9 /* DrudgeUITests.xctest */,
+				32C6DC8D1CE9345E00ADF8C9 /* Drudge Reader.app */,
+				32C6DCA11CE9345E00ADF8C9 /* Drudge Reader.xctest */,
+				32C6DCAC1CE9345E00ADF8C9 /* Drudge Reader.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -203,9 +203,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		32C6DC8C1CE9345E00ADF8C9 /* Drudge */ = {
+		32C6DC8C1CE9345E00ADF8C9 /* Drudge Reader */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 32C6DCB51CE9345E00ADF8C9 /* Build configuration list for PBXNativeTarget "Drudge" */;
+			buildConfigurationList = 32C6DCB51CE9345E00ADF8C9 /* Build configuration list for PBXNativeTarget "Drudge Reader" */;
 			buildPhases = (
 				32C6DC891CE9345E00ADF8C9 /* Sources */,
 				32C6DC8A1CE9345E00ADF8C9 /* Frameworks */,
@@ -215,14 +215,14 @@
 			);
 			dependencies = (
 			);
-			name = Drudge;
+			name = "Drudge Reader";
 			productName = Drudge;
-			productReference = 32C6DC8D1CE9345E00ADF8C9 /* Drudge.app */;
+			productReference = 32C6DC8D1CE9345E00ADF8C9 /* Drudge Reader.app */;
 			productType = "com.apple.product-type.application";
 		};
-		32C6DCA01CE9345E00ADF8C9 /* DrudgeTests */ = {
+		32C6DCA01CE9345E00ADF8C9 /* Drudge ReaderTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 32C6DCB81CE9345E00ADF8C9 /* Build configuration list for PBXNativeTarget "DrudgeTests" */;
+			buildConfigurationList = 32C6DCB81CE9345E00ADF8C9 /* Build configuration list for PBXNativeTarget "Drudge ReaderTests" */;
 			buildPhases = (
 				32C6DC9D1CE9345E00ADF8C9 /* Sources */,
 				32C6DC9E1CE9345E00ADF8C9 /* Frameworks */,
@@ -233,14 +233,14 @@
 			dependencies = (
 				32C6DCA31CE9345E00ADF8C9 /* PBXTargetDependency */,
 			);
-			name = DrudgeTests;
+			name = "Drudge ReaderTests";
 			productName = DrudgeTests;
-			productReference = 32C6DCA11CE9345E00ADF8C9 /* DrudgeTests.xctest */;
+			productReference = 32C6DCA11CE9345E00ADF8C9 /* Drudge Reader.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		32C6DCAB1CE9345E00ADF8C9 /* DrudgeUITests */ = {
+		32C6DCAB1CE9345E00ADF8C9 /* Drudge ReaderUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 32C6DCBB1CE9345E00ADF8C9 /* Build configuration list for PBXNativeTarget "DrudgeUITests" */;
+			buildConfigurationList = 32C6DCBB1CE9345E00ADF8C9 /* Build configuration list for PBXNativeTarget "Drudge ReaderUITests" */;
 			buildPhases = (
 				32C6DCA81CE9345E00ADF8C9 /* Sources */,
 				32C6DCA91CE9345E00ADF8C9 /* Frameworks */,
@@ -251,9 +251,9 @@
 			dependencies = (
 				32C6DCAE1CE9345E00ADF8C9 /* PBXTargetDependency */,
 			);
-			name = DrudgeUITests;
+			name = "Drudge ReaderUITests";
 			productName = DrudgeUITests;
-			productReference = 32C6DCAC1CE9345E00ADF8C9 /* DrudgeUITests.xctest */;
+			productReference = 32C6DCAC1CE9345E00ADF8C9 /* Drudge Reader.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -285,7 +285,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 32C6DC881CE9345E00ADF8C9 /* Build configuration list for PBXProject "Drudge" */;
+			buildConfigurationList = 32C6DC881CE9345E00ADF8C9 /* Build configuration list for PBXProject "Drudge Reader" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -298,9 +298,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				32C6DC8C1CE9345E00ADF8C9 /* Drudge */,
-				32C6DCA01CE9345E00ADF8C9 /* DrudgeTests */,
-				32C6DCAB1CE9345E00ADF8C9 /* DrudgeUITests */,
+				32C6DC8C1CE9345E00ADF8C9 /* Drudge Reader */,
+				32C6DCA01CE9345E00ADF8C9 /* Drudge ReaderTests */,
+				32C6DCAB1CE9345E00ADF8C9 /* Drudge ReaderUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -315,10 +315,10 @@
 				326AD5271CF1E41D00CF15FB /* articles2.json in Resources */,
 				32C6DC9B1CE9345E00ADF8C9 /* LaunchScreen.storyboard in Resources */,
 				32C6DC981CE9345E00ADF8C9 /* Assets.xcassets in Resources */,
+				322200C81D1640BE00AC7D93 /* logoLaunchIcon.png in Resources */,
 				32C6DC961CE9345E00ADF8C9 /* Main.storyboard in Resources */,
 				322E1E311CF488A2004D071F /* assets in Resources */,
 				329695A11CFE2B11007EC869 /* Settings.bundle in Resources */,
-				322E1E351CF4F49D004D071F /* logoLaunchIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,12 +388,12 @@
 /* Begin PBXTargetDependency section */
 		32C6DCA31CE9345E00ADF8C9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 32C6DC8C1CE9345E00ADF8C9 /* Drudge */;
+			target = 32C6DC8C1CE9345E00ADF8C9 /* Drudge Reader */;
 			targetProxy = 32C6DCA21CE9345E00ADF8C9 /* PBXContainerItemProxy */;
 		};
 		32C6DCAE1CE9345E00ADF8C9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 32C6DC8C1CE9345E00ADF8C9 /* Drudge */;
+			target = 32C6DC8C1CE9345E00ADF8C9 /* Drudge Reader */;
 			targetProxy = 32C6DCAD1CE9345E00ADF8C9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -512,7 +512,7 @@
 				INFOPLIST_FILE = Drudge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nerdwaller.Drudge;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Drudge Reader";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
@@ -527,7 +527,7 @@
 				INFOPLIST_FILE = Drudge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nerdwaller.Drudge;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Drudge Reader";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
@@ -540,8 +540,8 @@
 				INFOPLIST_FILE = DrudgeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nerdwaller.DrudgeTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Drudge.app/Drudge";
+				PRODUCT_NAME = "Drudge Reader";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Drudge Reader.app/Drudge Reader";
 			};
 			name = Debug;
 		};
@@ -552,8 +552,8 @@
 				INFOPLIST_FILE = DrudgeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nerdwaller.DrudgeTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Drudge.app/Drudge";
+				PRODUCT_NAME = "Drudge Reader";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Drudge Reader.app/Drudge Reader";
 			};
 			name = Release;
 		};
@@ -563,7 +563,7 @@
 				INFOPLIST_FILE = DrudgeUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nerdwaller.DrudgeUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Drudge Reader";
 				TEST_TARGET_NAME = Drudge;
 			};
 			name = Debug;
@@ -574,7 +574,7 @@
 				INFOPLIST_FILE = DrudgeUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nerdwaller.DrudgeUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Drudge Reader";
 				TEST_TARGET_NAME = Drudge;
 			};
 			name = Release;
@@ -582,7 +582,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		32C6DC881CE9345E00ADF8C9 /* Build configuration list for PBXProject "Drudge" */ = {
+		32C6DC881CE9345E00ADF8C9 /* Build configuration list for PBXProject "Drudge Reader" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				32C6DCB31CE9345E00ADF8C9 /* Debug */,
@@ -591,7 +591,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		32C6DCB51CE9345E00ADF8C9 /* Build configuration list for PBXNativeTarget "Drudge" */ = {
+		32C6DCB51CE9345E00ADF8C9 /* Build configuration list for PBXNativeTarget "Drudge Reader" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				32C6DCB61CE9345E00ADF8C9 /* Debug */,
@@ -600,7 +600,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		32C6DCB81CE9345E00ADF8C9 /* Build configuration list for PBXNativeTarget "DrudgeTests" */ = {
+		32C6DCB81CE9345E00ADF8C9 /* Build configuration list for PBXNativeTarget "Drudge ReaderTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				32C6DCB91CE9345E00ADF8C9 /* Debug */,
@@ -609,7 +609,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		32C6DCBB1CE9345E00ADF8C9 /* Build configuration list for PBXNativeTarget "DrudgeUITests" */ = {
+		32C6DCBB1CE9345E00ADF8C9 /* Build configuration list for PBXNativeTarget "Drudge ReaderUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				32C6DCBC1CE9345E00ADF8C9 /* Debug */,

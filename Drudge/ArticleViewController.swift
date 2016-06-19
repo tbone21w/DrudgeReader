@@ -96,9 +96,7 @@ class ArticleViewController: UIViewController,UITableViewDataSource, UITableView
     //setup pull to refresh
     tableView.addSubview(refreshControl)
     
-    //Swap out when we get a logo
-    title = "Drudge Reader"
-    //navigationItem.titleView = UIImageView(image:  DrudgeStyleKit.imageOfMiniLogo2)
+    navigationItem.titleView = UIImageView(image:  DrudgeStyleKit.imageOfDNavLogo)
     
     let titleTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.scrollToTop))
     navigationItem.titleView?.userInteractionEnabled = true
