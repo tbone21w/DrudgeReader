@@ -7,7 +7,7 @@ Fun little app based on API friend built and first somewhat useful thing I built
 * NSFetchedResultsController with Search Predicates and sorts 
 * Local Notifications
 * Settings
-* Custom Graphics with PaintCode integration
+* Custom Graphics
 * Cocoapods
 
 ## Example Screens 
