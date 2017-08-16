@@ -1,6 +1,6 @@
 # DrudgeReader
 
-Fun little app based on API friend built and first somewhat useful thing I built on IOS.
+Fun little app based on [API](https://github.com/mrasband/drudge_parser) friend built and first somewhat useful thing I built on IOS.
 
 * Swift
 * CoreData
